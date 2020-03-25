@@ -28,3 +28,7 @@ condition
     @if(!isEmpty(role)){
      and role=#role#
     @}
+    
+findUserByUsername
+===
+    select * from lb_user where username = #username#

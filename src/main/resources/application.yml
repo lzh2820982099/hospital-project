@@ -12,7 +12,7 @@ beetlsql:
   basePackage: com.lb.dao
   # sql 文件的位置
   sqlPath: /sql
-  daoSuffix: Dao
+  daoSuffix: Dao  #作用：
   dbStyle: org.beetl.sql.core.db.MySqlStyle
 
 ################### mysql数据库连接配置 #################

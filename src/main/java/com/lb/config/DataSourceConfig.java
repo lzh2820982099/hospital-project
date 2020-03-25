@@ -2,6 +2,7 @@ package com.lb.config;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 
 import javax.sql.DataSource;
@@ -14,6 +15,7 @@ import javax.sql.DataSource;
  * @Description 数据库配置
  * @createTime 2020年03月25日 13:35:00
  */
+@Configuration
 public class DataSourceConfig {
     /**
      * BeetlSQL 官方推荐配置
