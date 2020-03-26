@@ -5,9 +5,9 @@
 <meta charset="UTF-8">
 <title>登录&注册</title>
 <!--图标样式-->
-<link rel='stylesheet' href='/css/all.min.css'>
+<link rel='stylesheet' href='${ctxPath}/css/all.min.css'>
 
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="${ctxPath}/css/style.css">
 
 </head>
 
@@ -53,8 +53,8 @@
 		</div>
 	</div>
 </div>
-  <script src="/js/layui.all.js"></script>
-  <script src="/js/jquery-3.3.1.min.js"></script>
+  <script src="${ctxPath}/js/layui.all.js"></script>
+  <script src="${ctxPath}/js/jquery-3.3.1.min.js"></script>
   <script type="text/javascript">
 	  function regest(){
 		  var d = {};
@@ -64,19 +64,18 @@
 		  });
 		  var json=JSON.stringify(d);
 		  $.ajax({
-			  url:"/regest",
+			  url:"${ctxPath}/home/regist",
 			  type:'post',
 			  data:json,
 			  contentType: "application/json;charset=utf-8",
 			  success:function(data){
 				  console.log(data.message);
-				  if(data.message=="注册成功"){
+				  if(data.code=="102" || data.code=="103" || data.code=="104"){
 					  alert('注册成功！！！\n请返回登录页面进行登录或继续注册')
 					  location.href="/hospital-sys/hospital/login";
 				  }
 				  else {
 					  $("#message2").text(data.message);
-
 				  }
 			  },
 			  error:function (data) {
@@ -95,7 +94,7 @@
 		  });
 		  var json=JSON.stringify(d);
 		  $.ajax({
-			  url:"/home/login",
+			  url:"${ctxPath}/home/login",
 			  method:'post',
 			  data:json,
 			  contentType: "application/json;charset=utf-8",
@@ -117,6 +116,6 @@
 		  return false
 	  }
   </script>
-<script  src="/js/index.js"></script>
+<script  src="${ctxPath}/js/index.js"></script>
 </body>
 </html>

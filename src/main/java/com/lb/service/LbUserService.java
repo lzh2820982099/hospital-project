@@ -1,6 +1,7 @@
 package com.lb.service;
 
 import com.lb.entity.LbUser;
+import com.lb.vo.ActiveUser;
 import com.lb.vo.ResponseResult;
 
 /**
@@ -13,4 +14,9 @@ import com.lb.vo.ResponseResult;
 public interface LbUserService {
     //校验登录
     ResponseResult checkUser(LbUser user);
+
+    /**
+     * 注册用户
+     */
+    ResponseResult registUser(ActiveUser activeUser);
 }

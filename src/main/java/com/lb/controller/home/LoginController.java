@@ -2,6 +2,7 @@ package com.lb.controller.home;
 
 import com.lb.entity.LbUser;
 import com.lb.service.LbUserService;
+import com.lb.vo.ActiveUser;
 import com.lb.vo.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,5 +44,14 @@ public class LoginController {
             session.setAttribute("user",user);
         }
         return result;
+    }
+
+    /**
+     * 注册用户
+     */
+    @ResponseBody
+    @RequestMapping("/regist")
+    public ResponseResult regist(@RequestBody ActiveUser activeUser){
+        return lbUserService.registUser(activeUser);
     }
 }
