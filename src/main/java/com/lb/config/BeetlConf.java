@@ -15,19 +15,17 @@ public class BeetlConf {
         @Bean(name = "beetlConfig")
         public BeetlGroupUtilConfiguration getBeetlGroupUtilConfiguration() {
                 BeetlGroupUtilConfiguration beetlGroupUtilConfiguration = new BeetlGroupUtilConfiguration();
-               //获取Spring Boot 的ClassLoader
-           ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        if(loader==null){
-            loader = BeetlConf.class.getClassLoader();
-        }
-        ClasspathResourceLoader cploder = new ClasspathResourceLoader(loader,
-                templatesPath);
-        beetlGroupUtilConfiguration.setResourceLoader(cploder);
-        beetlGroupUtilConfiguration.init();
-        //如果使用了优化编译器，涉及到字节码操作，需要添加ClassLoader
-        beetlGroupUtilConfiguration.getGroupTemplate().setClassLoader(loader);
-        return beetlGroupUtilConfiguration;
-
+                //获取Spring Boot 的ClassLoader
+                ClassLoader loader = Thread.currentThread().getContextClassLoader();
+                if(loader==null){
+                    loader = BeetlConf.class.getClassLoader();
+                }
+                ClasspathResourceLoader cploder = new ClasspathResourceLoader(loader, templatesPath);
+                beetlGroupUtilConfiguration.setResourceLoader(cploder);
+                beetlGroupUtilConfiguration.init();
+                //如果使用了优化编译器，涉及到字节码操作，需要添加ClassLoader
+                beetlGroupUtilConfiguration.getGroupTemplate().setClassLoader(loader);
+                return beetlGroupUtilConfiguration;
         }
 
         @Bean(name = "beetlViewResolver")

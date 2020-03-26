@@ -102,8 +102,14 @@
 			  		console.log(data.code);
 			  		if (data.code == '202') {//用户登录成功
 						//判断角色，跳转至不同的视图中
-
-					} else {
+						if (data.message == '1') { //管理员
+							window.location.href = "${ctxPath}/admin/index";
+						} else if(data.message == '2'){//医生
+							window.location.href = "${ctxPath}/doctor/index";
+						} else {//患者
+							window.location.href = "${ctxPath}/patient/index";
+						}
+ 					} else {
 						$("#message").text(data.message);
 					}
 			  },
