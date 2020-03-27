@@ -7,14 +7,19 @@
     });
     function save(url){
         var d = {};
+        var _type = 'post';
         var t = $('form').serializeArray();
         $.each(t, function() {
             d[this.name] = this.value;
+            if (this.name == "id" && this.value != '') {
+                _type = 'put';
+            }
         });
+
         var json=JSON.stringify(d);
         $.ajax({
             url:url,
-            type:'post',
+            type:_type,
             data:json,
             contentType: "application/json;charset=utf-8",
             success:function(data){

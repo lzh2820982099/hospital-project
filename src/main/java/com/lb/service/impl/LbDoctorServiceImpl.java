@@ -40,29 +40,31 @@ public class LbDoctorServiceImpl implements LbDoctorService {
     }
 
     @Override
-    public ResponseResult saveDoctor(LbDoctor lbDoctor) {
+    public ResponseResult insertDoctor(LbDoctor lbDoctor) {
         ResponseResult result = new ResponseResult();
-        //更新还是插入
-        if (lbDoctor.getId() != null) {
-            lbDoctorDao.updateById(lbDoctor);
+        //先教验该医生的信息是否已经添加
+        LambdaQuery<LbDoctor> query = lbDoctorDao.createLambdaQuery();
+        if (!StringUtils.isEmpty(lbDoctor.getCertId())) {
+            query.andEq(LbDoctor::getCertId,lbDoctor.getCertId());
+        }
+        LbDoctor sysDoctor = query.single();
+        if (sysDoctor != null) {
+            result.setCode("301");
+            result.setMessage("该身份证已被注册或使用！");
+        } else {
+            lbDoctorDao.insert(lbDoctor);
             result.setCode("302");
             result.setMessage("信息保存成功！");
-        } else {
-            //先教验该医生的信息是否已经添加
-            LambdaQuery<LbDoctor> query = lbDoctorDao.createLambdaQuery();
-            if (!StringUtils.isEmpty(lbDoctor.getCertId())) {
-                query.andEq(LbDoctor::getCertId,lbDoctor.getCertId());
-            }
-            LbDoctor sysDoctor = query.single();
-            if (sysDoctor != null) {
-                result.setCode("301");
-                result.setMessage("该身份证已被注册或使用！");
-            } else {
-                lbDoctorDao.insert(lbDoctor);
-                result.setCode("302");
-                result.setMessage("信息保存成功！");
-            }
         }
+        return result;
+    }
+
+    @Override
+    public ResponseResult updateDoctor(LbDoctor lbDoctor) {
+        ResponseResult result = new ResponseResult();
+        lbDoctorDao.updateById(lbDoctor);
+        result.setCode("302");
+        result.setMessage("信息保存成功！");
         return result;
     }
 

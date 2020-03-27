@@ -20,7 +20,15 @@ public interface LbDoctorService {
     /**
      * 保存
      */
-    ResponseResult saveDoctor(LbDoctor lbDoctor);
+    ResponseResult insertDoctor(LbDoctor lbDoctor);
+
+    /**
+     * 更新记录
+     */
+    /**
+     * 保存
+     */
+    ResponseResult updateDoctor(LbDoctor lbDoctor);
 
     /**
      * 根据主键id查询医生

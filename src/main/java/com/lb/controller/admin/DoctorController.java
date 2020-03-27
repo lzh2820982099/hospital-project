@@ -7,10 +7,7 @@ import org.beetl.sql.core.engine.PageQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -43,32 +40,51 @@ public class DoctorController {
     }
 
     /**
-     * 医生表单
+     * 医生新增
      */
-    @RequestMapping("/form")
-    public String doctorForm(LbDoctor lbDoctor,Model model) {
-        if (lbDoctor.getId() != null) {
-            lbDoctor = lbDoctorService.findOne(lbDoctor.getId());
-        }
+    @RequestMapping("/")
+    public String doctorAddForm(LbDoctor lbDoctor,Model model) {
         model.addAttribute("doctor",lbDoctor);
         return "admin/doctorForm";
     }
 
     /**
-     * 异步保存
+     * 医生编辑
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String doctorEditForm(@PathVariable Integer id,Model model) {
+        model.addAttribute("doctor",lbDoctorService.findOne(id));
+        return "admin/doctorForm";
+    }
+
+    /**
+     * 异步插入记录
      */
     @ResponseBody
-    @RequestMapping("/save")
-    public ResponseResult save(@RequestBody LbDoctor lbDoctor) {
-        return lbDoctorService.saveDoctor(lbDoctor);
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    public ResponseResult insert(@RequestBody LbDoctor lbDoctor) {
+        return lbDoctorService.insertDoctor(lbDoctor);
+    }
+
+    /**
+     * 异步更新记录
+     * @param lbDoctor
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/", method = RequestMethod.PUT)
+    public ResponseResult update(@RequestBody LbDoctor lbDoctor) {
+        return lbDoctorService.updateDoctor(lbDoctor);
     }
 
     /**
      * 异步删除
      */
     @ResponseBody
-    @RequestMapping("/delete")
-    public ResponseResult delete(Integer id){
+    @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
+    public ResponseResult delete(@PathVariable Integer id){
         int rows = lbDoctorService.deleteDoctory(id);
         ResponseResult result = new ResponseResult();
         if (rows > 0) {

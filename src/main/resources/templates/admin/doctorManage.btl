@@ -16,14 +16,14 @@
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
             <h5>医生管理</h5>
-            <form action="${ctxPath}/admin/doctorManage" method="get">
+            <form action="${ctxPath}/admin/doctor/manage" method="get">
             <table>
                 <tr>
                     <td>昵称:</td>
                     <td><input name="name" autocomplete="off" value="${name!''}" class="layui-input lay-size=sm" ></td>
                     <td>&nbsp;&nbsp;证件号:</td>
                     <td><input name="certId" autocomplete="off" value="${certId!''}" class="layui-input lay-size=sm" ></td>
-                    <td>   <button class="layui-btn" type="submit"><i class="layui-icon">&#xe615;</i></button></div></td>
+                    <td>   <button class="layui-btn" type="submit"><i class="layui-icon">&#xe615;</i></button></td>
                 </tr>
             </table>
             </form>
@@ -51,7 +51,7 @@
                     <th>所属部门</th>
                     <th>家庭住址</th>
                     <th>操作&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button class="layui-btn" onclick="showAdd('${ctxPath}/admin/doctor/form')"><i class="layui-icon">&#xe608;</i> 添加</button>
+                        <button class="layui-btn" onclick="showAdd('${ctxPath}/admin/doctor/')"><i class="layui-icon">&#xe608;</i> 添加</button>
                     </th>
                 </tr>
                 </thead>
@@ -73,8 +73,8 @@
                             <td>${doctor.department}</td>
                             <td>${doctor.address}</td>
                             <td>
-                                <button class="layui-btn" onclick="edit('${ctxPath}/admin/doctor/form',${doctor.id})"><i class="layui-icon">&#xe642;</i></button>
-                                <button class="layui-btn" onclick="del('${ctxPath}/admin/doctor/delete',${doctor.id})"><i class="layui-icon">&#xe640;</i></button>
+                                <button class="layui-btn" onclick="edit('${ctxPath}/admin/doctor/',${doctor.id})"><i class="layui-icon">&#xe642;</i></button>
+                                <button class="layui-btn" onclick="del('${ctxPath}/admin/doctor/',${doctor.id})"><i class="layui-icon">&#xe640;</i></button>
                             </td>
                         </tr>
                         <%
