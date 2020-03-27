@@ -25,9 +25,6 @@ public interface LbDoctorService {
     /**
      * 更新记录
      */
-    /**
-     * 保存
-     */
     ResponseResult updateDoctor(LbDoctor lbDoctor);
 
     /**
@@ -38,5 +35,5 @@ public interface LbDoctorService {
     /**
      * 删除医生
      */
-    int deleteDoctory(Integer id);
+    int deleteDoctor(Integer id);
 }

@@ -1,7 +1,7 @@
 package com.lb.controller.admin;
 
-import com.lb.entity.LbDoctor;
-import com.lb.service.LbDoctorService;
+import com.lb.entity.LbPatient;
+import com.lb.service.LbPatientService;
 import com.lb.vo.ResponseResult;
 import org.beetl.sql.core.engine.PageQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,49 +12,49 @@ import org.springframework.web.bind.annotation.*;
 /**
  * @author 蓝莲花
  * @version 1.0.0
- * @ClassName DoctorController.java
- * @Description 医生的后台控制台
- * @createTime 2020年03月26日 13:57:00
+ * @ClassName PatientController.java
+ * @Description 患者后台控制器
+ * @createTime 2020年03月27日 13:48:00
  */
 @Controller
-@RequestMapping("/admin/doctor")
-public class DoctorController {
+@RequestMapping("/admin/patient")
+public class PatientController {
     @Autowired
-    private LbDoctorService lbDoctorService;
+    private LbPatientService lbPatientService;
 
     @RequestMapping("/manage")
-    public String doctorManage(@RequestParam(required = false, defaultValue = "1") Integer pageNo,
-                               @RequestParam(required = false, defaultValue = "5") Integer pageSize,
-                               @RequestParam(required = false) String name,
-                               @RequestParam(required = false) String certId,
-                               Model model) {
+    public String manage(@RequestParam(required = false, defaultValue = "1") Integer pageNo,
+                         @RequestParam(required = false, defaultValue = "5") Integer pageSize,
+                         @RequestParam(required = false) String name,
+                         @RequestParam(required = false) String certId,
+                         Model model) {
         //查询医生的集合数据
-        PageQuery<LbDoctor> page = lbDoctorService.findList(pageNo,pageSize,name,certId);
+        PageQuery<LbPatient> page = lbPatientService.findList(pageNo,pageSize,name,certId);
         model.addAttribute("page",page);
         model.addAttribute("pageNo",pageNo);
         model.addAttribute("name",name);
         model.addAttribute("certId",certId);
-        return "admin/doctorManage";
+        return "admin/patientManage";
     }
 
     /**
-     * 医生新增
+     * 病人新增
      */
     @RequestMapping("/")
-    public String doctorAddForm(LbDoctor lbDoctor,Model model) {
-        model.addAttribute("doctor",lbDoctor);
-        return "admin/doctorForm";
+    public String doctorAddForm(LbPatient lbPatient,Model model) {
+        model.addAttribute("patient",lbPatient);
+        return "admin/patientForm";
     }
 
     /**
-     * 医生编辑
+     * 病人编辑
      * @param model
      * @return
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String doctorEditForm(@PathVariable Integer id,Model model) {
-        model.addAttribute("doctor",lbDoctorService.findOne(id));
-        return "admin/doctorForm";
+    public String doctorEditForm(@PathVariable Integer id, Model model) {
+        model.addAttribute("patient",lbPatientService.findOne(id));
+        return "admin/patientForm";
     }
 
     /**
@@ -62,19 +62,19 @@ public class DoctorController {
      */
     @ResponseBody
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public ResponseResult insert(@RequestBody LbDoctor lbDoctor) {
-        return lbDoctorService.insertDoctor(lbDoctor);
+    public ResponseResult insert(@RequestBody LbPatient lbPatient) {
+        return lbPatientService.insertPatient(lbPatient);
     }
 
     /**
      * 异步更新记录
-     * @param lbDoctor
+     * @param lbPatient
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/", method = RequestMethod.PUT)
-    public ResponseResult update(@RequestBody LbDoctor lbDoctor) {
-        return lbDoctorService.updateDoctor(lbDoctor);
+    public ResponseResult update(@RequestBody LbPatient lbPatient) {
+        return lbPatientService.updatePatient(lbPatient);
     }
 
     /**
@@ -83,7 +83,7 @@ public class DoctorController {
     @ResponseBody
     @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
     public ResponseResult delete(@PathVariable Integer id){
-        int rows = lbDoctorService.deleteDoctor(id);
+        int rows = lbPatientService.deleteById(id);
         ResponseResult result = new ResponseResult();
         if (rows > 0) {
             result.setCode("401");

@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import java.util.List;
-
 /**
  * @author 蓝莲花
  * @version 1.0.0
@@ -74,7 +72,7 @@ public class LbDoctorServiceImpl implements LbDoctorService {
     }
 
     @Override
-    public int deleteDoctory(Integer id) {
+    public int deleteDoctor(Integer id) {
         return lbDoctorDao.deleteById(id);
     }
 }

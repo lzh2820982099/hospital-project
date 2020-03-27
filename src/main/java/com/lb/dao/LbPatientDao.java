@@ -8,5 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LbPatientDao extends BaseMapper<LbPatient> {
-    //
+    //查询病人关联查询医生（分页）
+    void selectList(PageQuery<LbPatient> page);
 }

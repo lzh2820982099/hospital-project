@@ -1,8 +1,4 @@
 package com.lb.entity;
-import java.math.*;
-import java.util.Date;
-import java.sql.Timestamp;
-
 import lombok.Data;
 import org.beetl.sql.core.annotatoin.Table;
 
@@ -13,7 +9,7 @@ import org.beetl.sql.core.annotatoin.Table;
 */
 @Data
 @Table(name="lb_patient")
-public class LbPatient   {
+public class LbPatient {
 	
 	// alias
 	public static final String ALIAS_id = "id";
@@ -72,4 +68,7 @@ public class LbPatient   {
 	姓名
 	*/
 	private String name ;
+
+	//映射医生的名称
+	private String doctorName ;
 }

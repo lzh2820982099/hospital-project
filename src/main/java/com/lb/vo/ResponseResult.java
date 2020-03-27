@@ -13,4 +13,11 @@ import lombok.Data;
 public class ResponseResult {
     private String code;
     private String message;
+
+    public ResponseResult() {}
+
+    public ResponseResult(String code, String message) {
+        this.code = code;
+        this.message = message;
+    }
 }
