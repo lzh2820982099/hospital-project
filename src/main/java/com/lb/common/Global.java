@@ -10,4 +10,5 @@ public class Global {
     public static String SAVE_MSG_SUCCESS="保存成功";
     public static String SAVE_CODE_ERROR="301";
     public static String SAVE_MSG_ERROR="该身份证已被注册或使用！";
+    public static String SAVE_MSG_DRUGS_ERROR="该药品已存在！";
 }

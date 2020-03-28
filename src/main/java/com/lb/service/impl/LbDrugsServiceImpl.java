@@ -1,17 +1,15 @@
 package com.lb.service.impl;
 
 import com.lb.common.Global;
-import com.lb.dao.LbDoctorDao;
-import com.lb.entity.LbDoctor;
-import com.lb.service.LbDoctorService;
+import com.lb.dao.LbDrugsDao;
+import com.lb.entity.LbDrugs;
+import com.lb.service.LbDrugsService;
 import com.lb.vo.ResponseResult;
 import org.beetl.sql.core.engine.PageQuery;
 import org.beetl.sql.core.query.LambdaQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-
-import java.util.List;
 
 /**
  * @author 蓝莲花
@@ -21,39 +19,39 @@ import java.util.List;
  * @createTime 2020年03月26日 14:00:00
  */
 @Service
-public class LbDoctorServiceImpl implements LbDoctorService {
+public class LbDrugsServiceImpl implements LbDrugsService {
     @Autowired
-    private LbDoctorDao lbDoctorDao;
+    private LbDrugsDao lbDrugsDao;
 
     @Override
-    public PageQuery<LbDoctor> findList(Integer pageNo, Integer pageSize,String name,String certId) {
-        LambdaQuery<LbDoctor> query = lbDoctorDao.createLambdaQuery();
+    public PageQuery<LbDrugs> findList(Integer pageNo, Integer pageSize, String name, String type) {
+        LambdaQuery<LbDrugs> query = lbDrugsDao.createLambdaQuery();
         if (!StringUtils.isEmpty(name)) {
-            query.andLike(LbDoctor::getName,name);
+            query.andLike(LbDrugs::getName,name);
         }
-        if (!StringUtils.isEmpty(certId)) {
-            query.andEq(LbDoctor::getCertId,certId);
+        if (!StringUtils.isEmpty(type)) {
+            query.andEq(LbDrugs::getType,type);
         }
         if (pageNo > 0 && pageSize > 0) {
-            return query.desc(LbDoctor::getId).page(pageNo,pageSize);
+            return query.desc(LbDrugs::getId).page(pageNo,pageSize);
         }
         return null;
     }
 
     @Override
-    public ResponseResult insertDoctor(LbDoctor lbDoctor) {
+    public ResponseResult insertDrugs(LbDrugs lbDrugs) {
         ResponseResult result = new ResponseResult();
         //先教验该医生的信息是否已经添加
-        LambdaQuery<LbDoctor> query = lbDoctorDao.createLambdaQuery();
-        if (!StringUtils.isEmpty(lbDoctor.getCertId())) {
-            query.andEq(LbDoctor::getCertId,lbDoctor.getCertId());
+        LambdaQuery<LbDrugs> query = lbDrugsDao.createLambdaQuery();
+        if (!StringUtils.isEmpty(lbDrugs.getName())) {
+            query.andEq(LbDrugs::getName,lbDrugs.getName());
         }
-        LbDoctor sysDoctor = query.single();
-        if (sysDoctor != null) {
+        LbDrugs sysDrugs = query.single();
+        if (sysDrugs != null) {
             result.setCode(Global.SAVE_CODE_ERROR);
-            result.setMessage(Global.SAVE_MSG_ERROR);
+            result.setMessage(Global.SAVE_MSG_DRUGS_ERROR);
         } else {
-            lbDoctorDao.insert(lbDoctor);
+            lbDrugsDao.insert(lbDrugs);
             result.setCode(Global.SAVE_CODE_SUCCESS);
             result.setMessage(Global.SAVE_MSG_SUCCESS);
         }
@@ -61,22 +59,22 @@ public class LbDoctorServiceImpl implements LbDoctorService {
     }
 
     @Override
-    public ResponseResult updateDoctor(LbDoctor lbDoctor) {
+    public ResponseResult updateDrugs(LbDrugs lbDrugs) {
         ResponseResult result = new ResponseResult();
-        lbDoctorDao.updateById(lbDoctor);
+        lbDrugsDao.updateById(lbDrugs);
         result.setCode(Global.SAVE_CODE_SUCCESS);
         result.setMessage(Global.SAVE_MSG_SUCCESS);
         return result;
     }
 
     @Override
-    public LbDoctor findOne(Integer id) {
-        return lbDoctorDao.single(id);
+    public LbDrugs findOne(Integer id) {
+        return lbDrugsDao.single(id);
     }
 
     @Override
-    public ResponseResult deleteDoctor(Integer id) {
-        int rows = lbDoctorDao.deleteById(id);
+    public ResponseResult deleteDrugs(Integer id) {
+        int rows = lbDrugsDao.deleteById(id);
         ResponseResult result = new ResponseResult();
         if (rows > 0) {
             result.setCode(Global.DEL_CODE_SUCCESS);
@@ -86,12 +84,5 @@ public class LbDoctorServiceImpl implements LbDoctorService {
             result.setMessage(Global.DEL_MSG_ERROR);
         }
         return result;
-    }
-
-    @Override
-    public List<LbDoctor> getListByDepartment(String department) {
-        LambdaQuery<LbDoctor> query = lbDoctorDao.createLambdaQuery();
-        query.andEq(LbDoctor::getDepartment,department);
-        return query.select();
     }
 }

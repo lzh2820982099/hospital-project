@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @author 蓝莲花
  * @version 1.0.0
@@ -34,6 +36,7 @@ public class DoctorController {
         model.addAttribute("pageNo",pageNo);
         model.addAttribute("name",name);
         model.addAttribute("certId",certId);
+        model.addAttribute("path","/admin/doctor/manage");
         return "admin/doctorManage";
     }
 
@@ -84,5 +87,14 @@ public class DoctorController {
     @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
     public ResponseResult delete(@PathVariable Integer id){
         return lbDoctorService.deleteDoctor(id);
+    }
+
+    /**
+     * 根据部门查询医生
+     */
+    @ResponseBody
+    @RequestMapping(value = "/getList/{department}")
+    public List<LbDoctor> getList(@PathVariable String department){
+        return lbDoctorService.getListByDepartment(department);
     }
 }

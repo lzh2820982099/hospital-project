@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.List;
+
 /**
  * @author 蓝莲花
  * @version 1.0.0
@@ -33,6 +35,11 @@ public class LbPatientServiceImpl implements LbPatientService {
         }
         lbPatientDao.selectList(query);
         return query;
+    }
+
+    @Override
+    public List<LbPatient> findAll() {
+        return lbPatientDao.all();
     }
 
     @Override

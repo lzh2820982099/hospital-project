@@ -1,10 +1,10 @@
 package com.lb.entity;
-import java.math.*;
-import java.util.Date;
-import java.sql.Timestamp;
-
 import lombok.Data;
 import org.beetl.sql.core.annotatoin.Table;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.math.BigDecimal;
+import java.util.Date;
 
 
 /* 
@@ -41,5 +41,21 @@ public class LbAppointment   {
 	/*
 	预约时间
 	*/
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date time ;
+
+	/*
+	患者名称
+	 */
+	private String patientName;
+
+	/*
+	医生名称
+	 */
+	private String doctorName;
+
+	/*
+	部门名称
+	 */
+	private String department;
 }

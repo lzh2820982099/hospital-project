@@ -45,17 +45,17 @@
             var department=(data.value);
              $.ajax({
                  type: 'GET',
-                 url: '/doctor/'+department,
+                 url: '${ctxPath}/admin/doctor/getList/'+department,
                  dataType:  'json',
                  success: function(data){
-                     $("#doctorid").empty();
-                     data=data.doctors;
+                     $("#doctorId").empty();
+                     // data=data.doctors;
                     data.forEach(function(item){
                         var name=item.name;
                         console.log(name);
                         var id=item.id;
                         console.log(id);
-                        $("#doctorid").append("<option value="+id+">"+name+"</option>");
+                        $("#doctorId").append("<option value="+id+">"+name+"</option>");
                     });
                      form.render('select');
                  }

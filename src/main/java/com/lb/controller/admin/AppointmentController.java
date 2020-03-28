@@ -1,6 +1,7 @@
 package com.lb.controller.admin;
 
-import com.lb.entity.LbPatient;
+import com.lb.entity.LbAppointment;
+import com.lb.service.LbAppointmentService;
 import com.lb.service.LbPatientService;
 import com.lb.vo.ResponseResult;
 import org.beetl.sql.core.engine.PageQuery;
@@ -12,50 +13,53 @@ import org.springframework.web.bind.annotation.*;
 /**
  * @author 蓝莲花
  * @version 1.0.0
- * @ClassName PatientController.java
- * @Description 患者后台控制器
+ * @ClassName AppointmentController.java
+ * @Description 预约管理控制器
  * @createTime 2020年03月27日 13:48:00
  */
 @Controller
-@RequestMapping("/admin/patient")
-public class PatientController {
+@RequestMapping("/admin/appointment")
+public class AppointmentController {
+    @Autowired
+    private LbAppointmentService lbAppointmentService;
     @Autowired
     private LbPatientService lbPatientService;
 
     @RequestMapping("/manage")
     public String manage(@RequestParam(required = false, defaultValue = "1") Integer pageNo,
                          @RequestParam(required = false, defaultValue = "5") Integer pageSize,
-                         @RequestParam(required = false) String name,
-                         @RequestParam(required = false) String certId,
+                         @RequestParam(required = false) String patientName,
+                         @RequestParam(required = false) String doctorName,
                          Model model) {
-        //查询医生的集合数据
-        PageQuery<LbPatient> page = lbPatientService.findList(pageNo,pageSize,name,certId);
+        //查询预约记录
+        PageQuery<LbAppointment> page = lbAppointmentService.findList(pageNo,pageSize,patientName,doctorName);
         model.addAttribute("page",page);
         model.addAttribute("pageNo",pageNo);
-        model.addAttribute("name",name);
-        model.addAttribute("certId",certId);
-        model.addAttribute("path","/admin/patient/manage");
-        return "admin/patientManage";
+        model.addAttribute("patientName",patientName);
+        model.addAttribute("doctorName",doctorName);
+        model.addAttribute("path","/admin/appointment/manage");
+        return "admin/appointmentManage";
     }
 
     /**
-     * 病人新增
+     * 新增
      */
     @RequestMapping("/")
-    public String doctorAddForm(LbPatient lbPatient,Model model) {
-        model.addAttribute("patient",lbPatient);
-        return "admin/patientForm";
+    public String doctorAddForm(LbAppointment lbAppointment,Model model) {
+        model.addAttribute("patientList",lbPatientService.findAll());
+        model.addAttribute("appointment",lbAppointment);
+        return "admin/appointmentForm";
     }
 
     /**
-     * 病人编辑
+     * 编辑
      * @param model
      * @return
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String doctorEditForm(@PathVariable Integer id, Model model) {
-        model.addAttribute("patient",lbPatientService.findOne(id));
-        return "admin/patientForm";
+        model.addAttribute("appointment",lbAppointmentService.findOne(id));
+        return "admin/appointmentForm";
     }
 
     /**
@@ -63,19 +67,19 @@ public class PatientController {
      */
     @ResponseBody
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public ResponseResult insert(@RequestBody LbPatient lbPatient) {
-        return lbPatientService.insertPatient(lbPatient);
+    public ResponseResult insert(@RequestBody LbAppointment lbAppointment) {
+        return lbAppointmentService.insertAppointment(lbAppointment);
     }
 
     /**
      * 异步更新记录
-     * @param lbPatient
+     * @param lbAppointment
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/", method = RequestMethod.PUT)
-    public ResponseResult update(@RequestBody LbPatient lbPatient) {
-        return lbPatientService.updatePatient(lbPatient);
+    public ResponseResult update(@RequestBody LbAppointment lbAppointment) {
+        return lbAppointmentService.updateAppointment(lbAppointment);
     }
 
     /**
@@ -84,6 +88,6 @@ public class PatientController {
     @ResponseBody
     @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
     public ResponseResult delete(@PathVariable Integer id){
-        return lbPatientService.deleteById(id);
+        return lbAppointmentService.deleteById(id);
     }
 }
