@@ -33,5 +33,5 @@ public interface LbPatientService {
     /**
      * 删除医生
      */
-    int deleteById(Integer id);
+    ResponseResult deleteById(Integer id);
 }

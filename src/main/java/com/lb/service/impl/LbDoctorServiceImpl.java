@@ -1,5 +1,6 @@
 package com.lb.service.impl;
 
+import com.lb.common.Global;
 import com.lb.dao.LbDoctorDao;
 import com.lb.entity.LbDoctor;
 import com.lb.service.LbDoctorService;
@@ -47,12 +48,12 @@ public class LbDoctorServiceImpl implements LbDoctorService {
         }
         LbDoctor sysDoctor = query.single();
         if (sysDoctor != null) {
-            result.setCode("301");
-            result.setMessage("该身份证已被注册或使用！");
+            result.setCode(Global.SAVE_CODE_ERROR);
+            result.setMessage(Global.SAVE_MSG_ERROR);
         } else {
             lbDoctorDao.insert(lbDoctor);
-            result.setCode("302");
-            result.setMessage("信息保存成功！");
+            result.setCode(Global.SAVE_CODE_SUCCESS);
+            result.setMessage(Global.SAVE_MSG_SUCCESS);
         }
         return result;
     }
@@ -61,8 +62,8 @@ public class LbDoctorServiceImpl implements LbDoctorService {
     public ResponseResult updateDoctor(LbDoctor lbDoctor) {
         ResponseResult result = new ResponseResult();
         lbDoctorDao.updateById(lbDoctor);
-        result.setCode("302");
-        result.setMessage("信息保存成功！");
+        result.setCode(Global.SAVE_CODE_SUCCESS);
+        result.setMessage(Global.SAVE_MSG_SUCCESS);
         return result;
     }
 
@@ -72,7 +73,16 @@ public class LbDoctorServiceImpl implements LbDoctorService {
     }
 
     @Override
-    public int deleteDoctor(Integer id) {
-        return lbDoctorDao.deleteById(id);
+    public ResponseResult deleteDoctor(Integer id) {
+        int rows = lbDoctorDao.deleteById(id);
+        ResponseResult result = new ResponseResult();
+        if (rows > 0) {
+            result.setCode(Global.DEL_CODE_SUCCESS);
+            result.setMessage(Global.DEL_MSG_SUCCESS);
+        } else {
+            result.setCode(Global.DEL_CODE_ERROR);
+            result.setMessage(Global.DEL_MSG_ERROR);
+        }
+        return result;
     }
 }

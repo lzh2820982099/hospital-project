@@ -83,15 +83,6 @@ public class PatientController {
     @ResponseBody
     @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
     public ResponseResult delete(@PathVariable Integer id){
-        int rows = lbPatientService.deleteById(id);
-        ResponseResult result = new ResponseResult();
-        if (rows > 0) {
-            result.setCode("401");
-            result.setMessage("删除成功");
-        } else {
-            result.setCode("402");
-            result.setMessage("删除失败");
-        }
-        return result;
+        return lbPatientService.deleteById(id);
     }
 }

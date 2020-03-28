@@ -4,8 +4,6 @@ import com.lb.entity.LbDoctor;
 import com.lb.vo.ResponseResult;
 import org.beetl.sql.core.engine.PageQuery;
 
-import java.util.List;
-
 /**
  * @author 蓝莲花
  * @version 1.0.0
@@ -35,5 +33,5 @@ public interface LbDoctorService {
     /**
      * 删除医生
      */
-    int deleteDoctor(Integer id);
+    ResponseResult deleteDoctor(Integer id);
 }
