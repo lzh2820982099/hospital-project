@@ -39,11 +39,7 @@ public class LoginController {
     @ResponseBody
     @RequestMapping("/login")
     public ResponseResult login(@RequestBody LbUser user, HttpSession session) {
-        ResponseResult result = lbUserService.checkUser(user);
-        if (result.getCode().equals("202")) {
-            session.setAttribute("user",user);
-        }
-        return result;
+        return lbUserService.checkUser(user,session);
     }
 
     /**

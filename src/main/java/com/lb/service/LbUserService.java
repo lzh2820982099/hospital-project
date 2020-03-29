@@ -5,6 +5,8 @@ import com.lb.vo.ActiveUser;
 import com.lb.vo.ResponseResult;
 import org.beetl.sql.core.engine.PageQuery;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * @author 蓝莲花
  * @version 1.0.0
@@ -14,7 +16,7 @@ import org.beetl.sql.core.engine.PageQuery;
  */
 public interface LbUserService {
     //校验登录
-    ResponseResult checkUser(LbUser user);
+    ResponseResult checkUser(LbUser user, HttpSession session);
 
     /**
      * 注册用户

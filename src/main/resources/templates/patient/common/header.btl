@@ -1,0 +1,14 @@
+<header>
+    <a class="logo" href="/hospital"><img src="${ctxPath}/images/logo.png" width="350" height="51"/></a>
+</header>
+<div>
+    <table style="margin: 0 auto;">
+        <tr class="patient-nav">
+            <td><a href="/patient/index">首页</a></td>
+            <td><a href="/patient/search">查询</a></td>
+            <td><a href="/patient/medicalhistory">病史</a></td>
+            <td><a href="/patient/hospitalization">住院</a></td>
+            <td>你好,<span class="patient-username">${session.user.username}</span> <a href="${ctxPath}/home/logout">退出登录</a></td>
+        </tr>
+    </table>
+</div>

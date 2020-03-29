@@ -3,6 +3,7 @@ package com.lb.controller.admin;
 import com.lb.entity.LbAppointment;
 import com.lb.service.LbAppointmentService;
 import com.lb.service.LbPatientService;
+import com.lb.vo.QueryVo;
 import com.lb.vo.ResponseResult;
 import org.beetl.sql.core.engine.PageQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,17 +27,13 @@ public class AppointmentController {
     private LbPatientService lbPatientService;
 
     @RequestMapping("/manage")
-    public String manage(@RequestParam(required = false, defaultValue = "1") Integer pageNo,
-                         @RequestParam(required = false, defaultValue = "5") Integer pageSize,
-                         @RequestParam(required = false) String patientName,
-                         @RequestParam(required = false) String doctorName,
-                         Model model) {
+    public String manage(QueryVo queryVo,Model model) {
         //查询预约记录
-        PageQuery<LbAppointment> page = lbAppointmentService.findList(pageNo,pageSize,patientName,doctorName);
+        PageQuery<LbAppointment> page = lbAppointmentService.findList(queryVo);
         model.addAttribute("page",page);
-        model.addAttribute("pageNo",pageNo);
-        model.addAttribute("patientName",patientName);
-        model.addAttribute("doctorName",doctorName);
+        model.addAttribute("pageNo",queryVo.getPageNo());
+        model.addAttribute("patientName",queryVo.getPatientName());
+        model.addAttribute("doctorName",queryVo.getDoctorName());
         model.addAttribute("path","/admin/appointment/manage");
         return "admin/appointmentManage";
     }

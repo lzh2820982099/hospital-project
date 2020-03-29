@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * @author 蓝莲花
  * @version 1.0.0
@@ -32,7 +34,7 @@ public class LbUserServiceImpl implements LbUserService {
     private LbPatientDao lbPatientDao;
 
     @Override
-    public ResponseResult checkUser(LbUser user) {
+    public ResponseResult checkUser(LbUser user, HttpSession session) {
         //从数据库中查询用户
         ResponseResult result = new ResponseResult();
         LbUser sysUser = lbUserDao.findUserByUsername(user.getUsername());
@@ -44,6 +46,8 @@ public class LbUserServiceImpl implements LbUserService {
             if (sysUser.getPassword().equals(user.getPassword())) {
                 result.setCode("202");
                 result.setMessage(String.valueOf(sysUser.getRole()));//绑定登录角色
+                //将用户信息绑定到session中
+                session.setAttribute("user",sysUser);
             } else {
                 result.setCode("203");//密码错误
                 result.setMessage("用户名或密码错误");

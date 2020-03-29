@@ -4,6 +4,7 @@ import com.lb.common.Global;
 import com.lb.dao.LbAppointmentDao;
 import com.lb.entity.LbAppointment;
 import com.lb.service.LbAppointmentService;
+import com.lb.vo.QueryVo;
 import com.lb.vo.ResponseResult;
 import org.beetl.sql.core.engine.PageQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +23,16 @@ public class LbAppointmentServiceImpl implements LbAppointmentService {
     @Autowired
     private LbAppointmentDao lbAppointmentDao;
     @Override
-    public PageQuery<LbAppointment> findList(long pageNo, long pageSize, String patientName, String doctorName) {
-        PageQuery<LbAppointment> query = new PageQuery(pageNo,pageSize);
-        if (!StringUtils.isEmpty(patientName)) {
-            query.setPara("patientName",patientName);
+    public PageQuery<LbAppointment> findList(QueryVo queryVo) {
+        PageQuery<LbAppointment> query = new PageQuery(queryVo.getPageNo(),queryVo.getPageSize());
+        if (!StringUtils.isEmpty(queryVo.getPatientName())) {
+            query.setPara("patientName",queryVo.getPatientName());
         }
-        if (!StringUtils.isEmpty(doctorName)) {
-            query.setPara("doctorName",doctorName);
+        if (!StringUtils.isEmpty(queryVo.getDoctorName())) {
+            query.setPara("doctorName",queryVo.getDoctorName());
+        }
+        if (queryVo.getUserId() != null) {
+            query.setPara("userId",queryVo.getUserId());
         }
         query.setOrderBy("a.id desc");
         lbAppointmentDao.selectList(query);
