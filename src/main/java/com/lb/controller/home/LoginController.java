@@ -54,4 +54,14 @@ public class LoginController {
     public ResponseResult regist(@RequestBody ActiveUser activeUser){
         return lbUserService.registUser(activeUser);
     }
+
+    /**
+     * 安全退出
+     */
+    @RequestMapping("/logout")
+    public String logout(HttpSession session) {
+        // 清除sessin
+        session.invalidate();
+        return "redirect:/home/loginRegiterPage";
+    }
 }

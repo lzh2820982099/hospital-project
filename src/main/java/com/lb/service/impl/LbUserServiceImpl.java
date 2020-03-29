@@ -1,18 +1,19 @@
 package com.lb.service.impl;
 
+import com.lb.common.Global;
 import com.lb.dao.LbDoctorDao;
 import com.lb.dao.LbPatientDao;
 import com.lb.dao.LbUserDao;
-import com.lb.entity.LbDoctor;
-import com.lb.entity.LbPatient;
-import com.lb.entity.LbUser;
+import com.lb.entity.*;
 import com.lb.service.LbUserService;
 import com.lb.vo.ActiveUser;
 import com.lb.vo.ResponseResult;
+import org.beetl.sql.core.engine.PageQuery;
 import org.beetl.sql.core.query.LambdaQuery;
 import org.beetl.sql.core.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 /**
  * @author 蓝莲花
@@ -109,6 +110,68 @@ public class LbUserServiceImpl implements LbUserService {
                 result.setCode("105");
                 result.setMessage("身份证被占用！");
             }
+        }
+        return result;
+    }
+
+    @Override
+    public PageQuery<LbUser> findList(Integer pageNo, Integer pageSize, String username) {
+        LambdaQuery<LbUser> query = lbUserDao.createLambdaQuery();
+        if (!StringUtils.isEmpty(username)) {
+            query.andLike(LbUser::getUsername,username);
+        }
+        query.andEq(LbUser::getRole,"1");
+        if (pageNo > 0 && pageSize > 0) {
+            return query.desc(LbUser::getId).page(pageNo,pageSize);
+        }
+        return null;
+    }
+
+    @Override
+    public ResponseResult insertUser(LbUser lbUser) {
+        ResponseResult result = new ResponseResult();
+        //先教验该医生的信息是否已经添加
+        LambdaQuery<LbUser> query = lbUserDao.createLambdaQuery();
+        if (!StringUtils.isEmpty(lbUser.getUsername())) {
+            query.andEq(LbUser::getUsername,lbUser.getUsername());
+        }
+        query.andEq(LbUser::getRole,"1");
+        LbUser sysUser = query.single();
+        if (sysUser != null) {
+            result.setCode(Global.SAVE_CODE_ERROR);
+            result.setMessage(Global.SAVE_MSG_DRUGS_ERROR);
+        } else {
+            lbUserDao.insert(sysUser);
+            result.setCode(Global.SAVE_CODE_SUCCESS);
+            result.setMessage(Global.SAVE_MSG_SUCCESS);
+        }
+        return result;
+    }
+
+    @Override
+    public ResponseResult updateUser(LbUser lbUser) {
+        ResponseResult result = new ResponseResult();
+        lbUserDao.updateById(lbUser);
+        result.setCode(Global.SAVE_CODE_SUCCESS);
+        result.setMessage(Global.SAVE_MSG_SUCCESS);
+        return result;
+    }
+
+    @Override
+    public LbUser findOne(Integer id) {
+        return lbUserDao.single(id);
+    }
+
+    @Override
+    public ResponseResult deleteUser(Integer id) {
+        int rows = lbUserDao.deleteById(id);
+        ResponseResult result = new ResponseResult();
+        if (rows > 0) {
+            result.setCode(Global.DEL_CODE_SUCCESS);
+            result.setMessage(Global.DEL_MSG_SUCCESS);
+        } else {
+            result.setCode(Global.DEL_CODE_ERROR);
+            result.setMessage(Global.DEL_MSG_ERROR);
         }
         return result;
     }

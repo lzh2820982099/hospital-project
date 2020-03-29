@@ -33,12 +33,12 @@ public interface LbPatientService {
     ResponseResult updatePatient(LbPatient lbPatient);
 
     /**
-     * 根据主键id查询医生
+     * 根据主键id查询
      */
     LbPatient findOne(Integer id);
 
     /**
-     * 删除医生
+     * 删除
      */
     ResponseResult deleteById(Integer id);
 }

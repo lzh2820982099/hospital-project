@@ -17,6 +17,9 @@ public interface LbDoctorService {
     //查医生集合
     PageQuery<LbDoctor> findList(Integer pageNo, Integer pageSize,String name,String certId);
 
+    //查询所有
+    List<LbDoctor> findAll();
+
     /**
      * 保存
      */

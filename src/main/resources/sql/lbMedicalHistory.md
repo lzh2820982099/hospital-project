@@ -34,3 +34,18 @@ condition
     @if(!isEmpty(doctorId)){
      and doctor_id=#doctorId#
     @}
+
+selectList
+===     
+        SELECT
+        	#page("m.*,p.name AS patientname,d.name AS doctorname,d.department AS department")#
+        FROM
+            lb_medicalhistory m
+        LEFT JOIN lb_patient p ON m.patient_id = p.id
+        LEFT JOIN lb_doctor d ON m.doctor_id = d.id where 1=1
+            @if(!isEmpty(patientName)){
+                and p.name like concat('%',#patientName#,'%')
+            @}
+            @if(!isEmpty(doctorName)){
+                and d.name like concat('%',#doctorName#,'%')
+            @}

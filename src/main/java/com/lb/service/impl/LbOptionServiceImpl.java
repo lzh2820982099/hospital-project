@@ -40,19 +40,19 @@ public class LbOptionServiceImpl implements LbOptionService {
     }
 
     @Override
-    public ResponseResult insertOption(LbOption lbDrugs) {
+    public ResponseResult insertOption(LbOption lbOption) {
         ResponseResult result = new ResponseResult();
         //先教验该医生的信息是否已经添加
         LambdaQuery<LbOption> query = lbOptionDao.createLambdaQuery();
-        if (!StringUtils.isEmpty(lbDrugs.getName())) {
-            query.andEq(LbOption::getName,lbDrugs.getName());
+        if (!StringUtils.isEmpty(lbOption.getName())) {
+            query.andEq(LbOption::getName,lbOption.getName());
         }
         LbDrugs sysDrugs = query.single();
         if (sysDrugs != null) {
             result.setCode(Global.SAVE_CODE_ERROR);
             result.setMessage(Global.SAVE_MSG_DRUGS_ERROR);
         } else {
-            lbOptionDao.insert(lbDrugs);
+            lbOptionDao.insert(lbOption);
             result.setCode(Global.SAVE_CODE_SUCCESS);
             result.setMessage(Global.SAVE_MSG_SUCCESS);
         }
@@ -60,9 +60,9 @@ public class LbOptionServiceImpl implements LbOptionService {
     }
 
     @Override
-    public ResponseResult updateOption(LbOption lbDrugs) {
+    public ResponseResult updateOption(LbOption lbOption) {
         ResponseResult result = new ResponseResult();
-        lbOptionDao.updateById(lbDrugs);
+        lbOptionDao.updateById(lbOption);
         result.setCode(Global.SAVE_CODE_SUCCESS);
         result.setMessage(Global.SAVE_MSG_SUCCESS);
         return result;

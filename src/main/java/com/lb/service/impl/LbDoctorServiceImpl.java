@@ -41,6 +41,11 @@ public class LbDoctorServiceImpl implements LbDoctorService {
     }
 
     @Override
+    public List<LbDoctor> findAll() {
+        return lbDoctorDao.all();
+    }
+
+    @Override
     public ResponseResult insertDoctor(LbDoctor lbDoctor) {
         ResponseResult result = new ResponseResult();
         //先教验该医生的信息是否已经添加

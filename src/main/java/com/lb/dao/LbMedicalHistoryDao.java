@@ -1,12 +1,12 @@
 package com.lb.dao;
-import org.beetl.sql.core.annotatoin.*;
-import org.beetl.sql.core.db.KeyHolder;
+
+import com.lb.entity.LbMedicalHistory;
 import org.beetl.sql.core.engine.PageQuery;
 import org.beetl.sql.core.mapper.BaseMapper;
-import com.lb.entity.*;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface LbMedicalhistoryDao extends BaseMapper<LbMedicalhistory> {
+public interface LbMedicalHistoryDao extends BaseMapper<LbMedicalHistory> {
     //
+    void selectList(PageQuery<LbMedicalHistory> page);
 }

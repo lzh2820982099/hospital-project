@@ -13,16 +13,16 @@
             </dl>
         </li>
         <li class="layui-nav-item" ><a href="${ctxPath}/admin/appointment/manage">预约管理</a></li>
-        <li class="layui-nav-item" ><a href="${ctxPath}/admin/medicalhistory/manage">病史管理</a></li>
+        <li class="layui-nav-item" ><a href="${ctxPath}/admin/medicalHistory/manage">病史管理</a></li>
         <li class="layui-nav-item" ><a href="${ctxPath}/admin/hospitalization/manage">住院信息管理</a></li>
-        <li class="layui-nav-item" ><a href="${ctxPath}/admin/admin/manage">管理员管理</a></li>
+        <li class="layui-nav-item" ><a href="${ctxPath}/admin/user/manage">管理员管理</a></li>
     </ul>
     <ul class="layui-nav layui-layout-right">
         <li class="layui-nav-item">
             <a href="javascript:">
-                欢迎&nbsp;&nbsp;&nbsp;&nbsp;tony
+                欢迎&nbsp;&nbsp;&nbsp;&nbsp;${session.user.username}
             </a>
         </li>
-        <li class="layui-nav-item"><a href="/loginout">退出登录</a></li>
+        <li class="layui-nav-item"><a href="${ctxPath}/home/logout">退出登录</a></li>
     </ul>
 </div>

@@ -40,3 +40,25 @@ condition
     @if(!isEmpty(outtime)){
      and outtime=#outtime#
     @}
+
+selectList
+===     
+        SELECT
+        	#page("h.*,p.name AS patientName")#
+        FROM
+            lb_hospitalization h
+        LEFT JOIN lb_patient p ON h.patient_id = p.id where 1=1
+            @if(!isEmpty(patientName)){
+                and p.name like concat('%',#patientName#,'%')
+            @}
+           @if(!isEmpty(intime)){
+                and h.intime=#intime#
+           @}
+
+selectAll
+===     
+        SELECT
+        	h.*,p.name AS patientName
+        FROM
+            lb_hospitalization h
+        LEFT JOIN lb_patient p ON h.patient_id = p.id

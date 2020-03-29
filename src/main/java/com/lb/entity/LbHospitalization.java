@@ -1,10 +1,11 @@
 package com.lb.entity;
-import java.math.*;
-import java.util.Date;
-import java.sql.Timestamp;
 
+import cn.afterturn.easypoi.excel.annotation.Excel;
 import lombok.Data;
 import org.beetl.sql.core.annotatoin.Table;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 
 /* 
@@ -28,35 +29,50 @@ public class LbHospitalization   {
 	/*
 	主键
 	*/
+	@Excel(name = "序号", orderNum = "0")
 	private Integer id ;
 	/*
 	患者id
 	*/
 	private Integer patientId ;
 	/*
-	床号
+	楼层
 	*/
-	private String bed ;
+	@Excel(name = "楼层",orderNum = "1")
+	private String floor ;
 	/*
 	房间号
 	*/
+	@Excel(name = "房间号",orderNum = "2")
 	private String door ;
 	/*
-	楼层
+	床号
 	*/
-	private String floor ;
+	@Excel(name = "床号",orderNum = "3")
+	private String bed ;
 	/*
 	病名称
 	*/
+	@Excel(name = "病名称",orderNum = "4")
 	private String medicalName ;
 	/*
 	住院时间
 	*/
+	@Excel(name = "住院时间",format = "yyyy-MM-dd",orderNum = "6")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date intime ;
 	/*
 	出院时间
 	*/
+	@Excel(name = "出院时间",format = "yyyy-MM-dd",orderNum = "7")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date outtime ;
+
+	/*
+	患者姓名
+	 */
+	@Excel(name = "患者姓名",orderNum = "5")
+	private String patientName;
 	
 	public LbHospitalization() {
 	}
