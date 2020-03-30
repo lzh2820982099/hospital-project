@@ -24,6 +24,9 @@
                 text-align: right;
                 padding: 10px;
             }
+            .layui-laypage .layui-laypage-curr .layui-laypage-em {
+                background-color: #1E9FFF;
+            }
         </style>
     </head>
     <body>
@@ -39,45 +42,51 @@
                 <a class="layui-btn layui-btn-normal"  href="${ctxPath}/patient/appointment">在线预约</a>
                 <a class="layui-btn layui-btn-normal"  href="javascript:;" onclick="createPDF()">打印挂号单</a>
             </div>
-            <table id="table" class="layui-table" lay-even lay-skin="nob" style="width: 1200px;margin: 0 auto;clear: both;">
-                <colgroup>
-                    <col width="150">
-                    <col width="150">
-                    <col width="150">
-                    <col width="150">
-                    <col width="150">
-                    <col width="150">
-                    <col width="150">
-                    <col width="150">
-                    <col width="300">
-                    <col>
-                </colgroup>
-                <thead>
-                <tr>
-                    <th>序号</th>
-                    <th>姓名</th>
-                    <th>预约医生</th>
-                    <th>预约时间</th>
-                    <th>费用</th>
-                </tr>
-                </thead>
-                <tbody>
-                    <%for(p in page.list){%>
+            <div class="layui-form" style="width: 1200px;margin: 0 auto;clear: both;">
+                <table id="table" class="layui-table">
+                    <colgroup>
+                        <col width="150">
+                        <col width="150">
+                        <col width="150">
+                        <col width="150">
+                        <col width="150">
+                        <col width="150">
+                        <col width="150">
+                        <col width="150">
+                        <col width="300">
+                        <col>
+                    </colgroup>
+                    <thead>
                         <tr>
-                            <td>${pLP.index}</td>
-                            <td>${p.patientName}</td>
-                            <td>${p.doctorName}</td>
-                            <td>${p.time,'yyyy-MM-dd'}</td>
-                            <td>${p.expenses}(元)</td>
+                            <th>序号</th>
+                            <th>姓名</th>
+                            <th>预约医生</th>
+                            <th>预约时间</th>
+                            <th>费用</th>
                         </tr>
-                    <%}%>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <%for(p in page.list){%>
+                            <tr>
+                                <td>${pLP.index}</td>
+                                <td>${p.patientName}</td>
+                                <td>${p.doctorName}</td>
+                                <td>${p.time,'yyyy-MM-dd'}</td>
+                                <td>${p.expenses}(元)</td>
+                            </tr>
+                        <%}%>
+                    </tbody>
+                </table>
+                <div id="pagination"></div>
+            </div>
             <div style="height: 400px;"></div>
         </div>
         <!-- 引入公共头部开始 -->
         <% include("common/footer.btl"){} %>
         <!-- 引入公共头部结束 -->
+        <!-- 引入分页脚本 start -->
+        <% include("../admin/common/page.btl"){} %>
+        <!-- 引入分页脚本 end -->
         <!-- 引入公共js start -->
         <% include("common/appointment-js.btl"){} %>
         <!-- 引入公共js end -->

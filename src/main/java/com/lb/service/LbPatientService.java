@@ -5,6 +5,7 @@ import com.lb.vo.ResponseResult;
 import org.beetl.sql.core.engine.PageQuery;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 蓝莲花
@@ -46,4 +47,9 @@ public interface LbPatientService {
      * 根据userid获取患者信息
      */
     LbPatient findOneByUserId(Integer userId);
+
+    /**
+     * 查询信息（医生、疾病、药品）
+     */
+    Map<String,List> findInfo(String type,String name);
 }

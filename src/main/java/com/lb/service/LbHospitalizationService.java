@@ -42,4 +42,10 @@ public interface LbHospitalizationService {
      * 删除
      */
     ResponseResult deleteById(Integer id);
+
+
+    /**
+     * 根据用户id查住院信息
+     */
+    LbHospitalization findOneByUserId(Integer userId);
 }

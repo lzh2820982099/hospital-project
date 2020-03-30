@@ -6,6 +6,7 @@ import com.lb.entity.LbPatient;
 import com.lb.service.LbDoctorService;
 import com.lb.service.LbMedicalHistoryService;
 import com.lb.service.LbPatientService;
+import com.lb.vo.QueryVo;
 import com.lb.vo.ResponseResult;
 import org.beetl.sql.core.engine.PageQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,17 +43,13 @@ public class MedicalHistoryController {
     }
 
     @RequestMapping("/manage")
-    public String manage(@RequestParam(required = false, defaultValue = "1") Integer pageNo,
-                         @RequestParam(required = false, defaultValue = "5") Integer pageSize,
-                         @RequestParam(required = false) String patientName,
-                         @RequestParam(required = false) String doctorName,
-                         Model model) {
+    public String manage(QueryVo queryVo,Model model) {
         //分页查询
-        PageQuery<LbMedicalHistory> page = lbMedicalHistoryService.findList(pageNo,pageSize,patientName,doctorName);
+        PageQuery<LbMedicalHistory> page = lbMedicalHistoryService.findList(queryVo);
         model.addAttribute("page",page);
-        model.addAttribute("pageNo",pageNo);
-        model.addAttribute("patientName",patientName);
-        model.addAttribute("doctorName",doctorName);
+        model.addAttribute("pageNo",queryVo.getPageNo());
+        model.addAttribute("patientName",queryVo.getPatientName());
+        model.addAttribute("doctorName",queryVo.getDoctorName());
         model.addAttribute("path","/admin/medicalHistory/manage");
         return "admin/medicalHistoryManage";
     }

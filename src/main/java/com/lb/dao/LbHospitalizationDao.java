@@ -13,4 +13,7 @@ public interface LbHospitalizationDao extends BaseMapper<LbHospitalization> {
 
     //查询所有的住院记录
     List<LbHospitalization> selectAll();
+
+    //根据userid查询住院信息
+    LbHospitalization findOneByUserId(Integer userId);
 }

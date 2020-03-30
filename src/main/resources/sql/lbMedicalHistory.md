@@ -49,3 +49,6 @@ selectList
             @if(!isEmpty(doctorName)){
                 and d.name like concat('%',#doctorName#,'%')
             @}
+            @if(!isEmpty(userId)){
+                and p.user_id = #userId#
+            @}

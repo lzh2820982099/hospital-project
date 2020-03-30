@@ -62,3 +62,11 @@ selectAll
         FROM
             lb_hospitalization h
         LEFT JOIN lb_patient p ON h.patient_id = p.id
+        
+findOneByUserId
+===     
+        SELECT
+            h.*,p.name AS patientName
+        FROM
+            lb_hospitalization h
+        LEFT JOIN lb_patient p ON h.patient_id = p.id where p.user_id = #userId#

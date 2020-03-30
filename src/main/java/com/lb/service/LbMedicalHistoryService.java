@@ -1,6 +1,7 @@
 package com.lb.service;
 
 import com.lb.entity.LbMedicalHistory;
+import com.lb.vo.QueryVo;
 import com.lb.vo.ResponseResult;
 import org.beetl.sql.core.engine.PageQuery;
 
@@ -13,7 +14,7 @@ import org.beetl.sql.core.engine.PageQuery;
  */
 public interface LbMedicalHistoryService {
     //查集合
-    PageQuery<LbMedicalHistory> findList(long pageNo, long pageSize, String patientName, String doctorName);
+    PageQuery<LbMedicalHistory> findList(QueryVo queryVo);
 
     /**
      * 保存

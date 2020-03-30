@@ -1,7 +1,13 @@
 package com.lb.service.impl;
 
 import com.lb.common.Global;
+import com.lb.dao.LbDoctorDao;
+import com.lb.dao.LbDrugsDao;
+import com.lb.dao.LbIllnessDao;
 import com.lb.dao.LbPatientDao;
+import com.lb.entity.LbDoctor;
+import com.lb.entity.LbDrugs;
+import com.lb.entity.LbIllness;
 import com.lb.entity.LbPatient;
 import com.lb.service.LbPatientService;
 import com.lb.vo.ResponseResult;
@@ -12,7 +18,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 蓝莲花
@@ -25,6 +33,13 @@ import java.util.List;
 public class LbPatientServiceImpl implements LbPatientService {
     @Autowired
     private LbPatientDao lbPatientDao;
+    @Autowired
+    private LbIllnessDao lbIllnessDao;
+    @Autowired
+    private LbDrugsDao lbDrugsDao;
+    @Autowired
+    private LbDoctorDao lbDoctorDao;
+
     @Override
     public PageQuery<LbPatient> findList(long pageNo, long pageSize, String name, String certId) {
         PageQuery<LbPatient> query = new PageQuery(pageNo,pageSize);
@@ -96,5 +111,52 @@ public class LbPatientServiceImpl implements LbPatientService {
         Query<LbPatient> query = lbPatientDao.createQuery();
         query.andEq("user_id",userId);
         return query.single();
+    }
+
+    @Override
+    public Map<String, List> findInfo(String type, String name) {
+        Map<String,List> map = new HashMap<>();
+        List list = null;
+        switch (type){
+            case "illness":
+                list = getIllness(name);
+                map.put(type,list);
+                break;
+            case "doctor":
+                list = getDoctors(name);
+                map.put(type, list);
+                break;
+            case "drugs":
+                list = getDrugs(name);
+                map.put(type, list);
+                break;
+            default:
+                break;
+        }
+        return map;
+    }
+
+    private List<LbIllness> getIllness(String name) {
+        Query<LbIllness> query = lbIllnessDao.createQuery();
+        if(!StringUtils.isEmpty(name)) {
+            query.andEq("name",name);
+        }
+        return query.select();
+    }
+
+    private List<LbDoctor> getDoctors(String name) {
+        Query<LbDoctor> query = lbDoctorDao.createLambdaQuery();
+        if(!StringUtils.isEmpty(name)) {
+            query.andEq("name",name);
+        }
+        return query.select();
+    }
+
+    private List<LbDrugs> getDrugs(String name) {
+        Query<LbDrugs> query = lbDrugsDao.createLambdaQuery();
+        if(!StringUtils.isEmpty(name)) {
+            query.andEq("name",name);
+        }
+        return query.select();
     }
 }

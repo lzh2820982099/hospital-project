@@ -80,4 +80,9 @@ public class LbHospitalizationServiceImpl implements LbHospitalizationService {
         }
         return result;
     }
+
+    @Override
+    public LbHospitalization findOneByUserId(Integer userId) {
+        return lbHospitalizationDao.findOneByUserId(userId);
+    }
 }
