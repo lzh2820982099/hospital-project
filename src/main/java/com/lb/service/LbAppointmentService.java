@@ -35,4 +35,10 @@ public interface LbAppointmentService {
      * 删除
      */
     ResponseResult deleteById(Integer id);
+
+    /**
+     * 插入返回主键
+     */
+    Integer insertReturnId(LbAppointment appointment);
+
 }

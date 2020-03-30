@@ -41,4 +41,9 @@ public interface LbPatientService {
      * 删除
      */
     ResponseResult deleteById(Integer id);
+
+    /**
+     * 根据userid获取患者信息
+     */
+    LbPatient findOneByUserId(Integer userId);
 }

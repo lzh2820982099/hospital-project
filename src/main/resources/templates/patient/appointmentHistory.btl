@@ -2,7 +2,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <title>住院信息</title>
+        <title>${session.user.username} - 预约记录</title>
         <link rel="stylesheet" href="${ctxPath}/css/layui.min.css">
         <link rel="stylesheet" href="${ctxPath}/css/normalize.css" type="text/css"/>
         <link rel="stylesheet" href="${ctxPath}/css/secondary.css" type="text/css"/>
@@ -18,6 +18,12 @@
                 padding-right: 10px;
                 font-weight: bold;
             }
+            .app-btn {
+                width: 1200px;
+                margin: auto;
+                text-align: right;
+                padding: 10px;
+            }
         </style>
     </head>
     <body>
@@ -29,7 +35,10 @@
 
             <!-- 内容主体区域 -->
             <hr style="magin-top:30px;">
-            <a class="layui-btn layui-btn-normal" style="float: right;margin: 10px 148px;" href="/patient/appointment">在线预约</a>
+            <div class="app-btn">
+                <a class="layui-btn layui-btn-normal"  href="${ctxPath}/patient/appointment">在线预约</a>
+                <a class="layui-btn layui-btn-normal"  href="javascript:;" onclick="createPDF()">打印挂号单</a>
+            </div>
             <table id="table" class="layui-table" lay-even lay-skin="nob" style="width: 1200px;margin: 0 auto;clear: both;">
                 <colgroup>
                     <col width="150">
@@ -53,15 +62,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                <%for(p in page.list){%>
-                    <tr>
-                        <td>${pLP.index}</td>
-                        <td>${p.patientName}</td>
-                        <td>${p.doctorName}</td>
-                        <td>${p.time,'yyyy-MM-dd'}</td>
-                        <td>${p.expenses}(元)</td>
-                    </tr>
-                <%}%>
+                    <%for(p in page.list){%>
+                        <tr>
+                            <td>${pLP.index}</td>
+                            <td>${p.patientName}</td>
+                            <td>${p.doctorName}</td>
+                            <td>${p.time,'yyyy-MM-dd'}</td>
+                            <td>${p.expenses}(元)</td>
+                        </tr>
+                    <%}%>
                 </tbody>
             </table>
             <div style="height: 400px;"></div>
@@ -69,12 +78,8 @@
         <!-- 引入公共头部开始 -->
         <% include("common/footer.btl"){} %>
         <!-- 引入公共头部结束 -->
-        <script src="${ctxPath}/js/layui.all.js"></script>
-        <script src="${ctxPath}/js/jquery-3.3.1.min.js"></script>
-        <script type="text/javascript">
-            function showHistroy() {
-                $("#table").show();
-            }
-        </script>
+        <!-- 引入公共js start -->
+        <% include("common/appointment-js.btl"){} %>
+        <!-- 引入公共js end -->
     </body>
 </html>

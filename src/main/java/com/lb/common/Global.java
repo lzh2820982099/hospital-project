@@ -11,4 +11,8 @@ public class Global {
     public static String SAVE_CODE_ERROR="301";
     public static String SAVE_MSG_ERROR="该身份证已被注册或使用！";
     public static String SAVE_MSG_DRUGS_ERROR="该药品已存在！";
+    public static String SAVE_APPOINTMENT_SUCCESS="预约成功！";
+
+    public static String APPOINTMENT_CODE_SUCCESS="501"; //挂号单生成成功code值
+
 }

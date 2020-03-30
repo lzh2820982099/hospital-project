@@ -7,6 +7,7 @@ import com.lb.service.LbPatientService;
 import com.lb.vo.ResponseResult;
 import org.beetl.sql.core.engine.PageQuery;
 import org.beetl.sql.core.query.LambdaQuery;
+import org.beetl.sql.core.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -64,7 +65,7 @@ public class LbPatientServiceImpl implements LbPatientService {
     @Override
     public ResponseResult updatePatient(LbPatient lbPatient) {
         ResponseResult result = new ResponseResult();
-        lbPatientDao.updateById(lbPatient);
+        lbPatientDao.updateTemplateById(lbPatient);
         result.setCode(Global.SAVE_CODE_SUCCESS);
         result.setMessage(Global.SAVE_MSG_SUCCESS);
         return result;
@@ -88,5 +89,12 @@ public class LbPatientServiceImpl implements LbPatientService {
             result.setMessage(Global.DEL_MSG_ERROR);
         }
         return result;
+    }
+
+    @Override
+    public LbPatient findOneByUserId(Integer userId) {
+        Query<LbPatient> query = lbPatientDao.createQuery();
+        query.andEq("user_id",userId);
+        return query.single();
     }
 }

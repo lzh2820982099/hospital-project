@@ -75,4 +75,9 @@ public class LbAppointmentServiceImpl implements LbAppointmentService {
         }
         return result;
     }
+
+    @Override
+    public Integer insertReturnId(LbAppointment appointment) {
+        return lbAppointmentDao.insertReturnKey(appointment).getInt();
+    }
 }
