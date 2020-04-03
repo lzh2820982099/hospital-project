@@ -62,7 +62,7 @@
     <!-- 引入公共头部结束 -->
 
     <!-- 内容主体区域 -->
-    <div style="padding: 15px; padding-left: 150px;">
+    <div style="width: 1200px;margin: 40px auto;clear: both;">
         <form class="layui-form" action="/patient/searchinfo" style="padding-bottom: 20px;" onsubmit="return search()" method="get">
             <table>
                 <tr>

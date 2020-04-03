@@ -16,8 +16,8 @@
     <!-- 引入公共头部结束 -->
 
     <!-- 内容主体区域 -->
-    <div style="padding: 15px;">
-        <table class="layui-table" lay-even lay-skin="nob" style="width: 60%;margin: 0 auto">
+    <div style="width: 1200px;margin: 40px auto;clear: both;">
+        <table class="layui-table" lay-even lay-skin="nob">
             <colgroup>
                 <col width="150">
                 <col width="200">
@@ -69,7 +69,7 @@
     </div>
     <hr>
     <hr>
-    <table id="table" class="layui-table" lay-even lay-skin="nob" style="width: 60%;margin: 0 auto;display: none">
+    <table id="table" class="layui-table" lay-even lay-skin="nob" style="width: 1200px;margin: 0 auto;display: none">
         <colgroup>
             <col width="150">
             <col width="150">

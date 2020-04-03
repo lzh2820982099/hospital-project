@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.ibeetl:beetl-framework-starter:1.2.24.RELEASE">
+    <CLASSES>
+      <root url="jar://D:/server/apache-maven-3.5.4/rep/com/ibeetl/beetl-framework-starter/1.2.24.RELEASE/beetl-framework-starter-1.2.24.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/server/apache-maven-3.5.4/rep/com/ibeetl/beetl-framework-starter/1.2.24.RELEASE/beetl-framework-starter-1.2.24.RELEASE-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/server/apache-maven-3.5.4/rep/com/ibeetl/beetl-framework-starter/1.2.24.RELEASE/beetl-framework-starter-1.2.24.RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,7 +1,5 @@
 package com.lb.dao;
-import org.beetl.sql.core.annotatoin.*;
-import org.beetl.sql.core.db.KeyHolder;
-import org.beetl.sql.core.engine.PageQuery;
+import org.beetl.sql.core.annotatoin.Param;
 import org.beetl.sql.core.mapper.BaseMapper;
 import com.lb.entity.*;
 import org.springframework.stereotype.Repository;
@@ -16,5 +14,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LbUserDao extends BaseMapper<LbUser> {
     //根据用户名查询
-    LbUser findUserByUsername(String username);
+    LbUser findUserByUsername(@Param("username") String username);
 }

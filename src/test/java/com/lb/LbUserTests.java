@@ -29,9 +29,10 @@ class LbUserTests {
     //构造条件查询器
     @Test
     public void query() {
-        Query<LbUser> query = lbUserDao.createQuery();
-        query.andEq("username","admin1");
-        LbUser user = query.single("username");
+//        Query<LbUser> query = lbUserDao.createQuery();
+//        query.andEq("username","admin1");
+//        LbUser user = query.single("username");
+        LbUser user = lbUserDao.findUserByUsername("admin1");
         System.out.println(user);
     }
 

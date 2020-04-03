@@ -1,5 +1,6 @@
 package com.lb.dao;
 import com.lb.entity.LbHospitalization;
+import org.beetl.sql.core.annotatoin.Param;
 import org.beetl.sql.core.engine.PageQuery;
 import org.beetl.sql.core.mapper.BaseMapper;
 import org.springframework.stereotype.Repository;
@@ -15,5 +16,5 @@ public interface LbHospitalizationDao extends BaseMapper<LbHospitalization> {
     List<LbHospitalization> selectAll();
 
     //根据userid查询住院信息
-    LbHospitalization findOneByUserId(Integer userId);
+    LbHospitalization findOneByUserId(@Param("userId") Integer userId);
 }

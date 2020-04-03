@@ -39,6 +39,7 @@ public class LoginController {
     @ResponseBody
     @RequestMapping("/login")
     public ResponseResult login(@RequestBody LbUser user, HttpSession session) {
+        System.out.println("======>" + user);
         return lbUserService.checkUser(user,session);
     }
 
