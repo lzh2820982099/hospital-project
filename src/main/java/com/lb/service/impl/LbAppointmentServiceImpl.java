@@ -40,6 +40,17 @@ public class LbAppointmentServiceImpl implements LbAppointmentService {
     }
 
     @Override
+    public PageQuery<LbAppointment> findListByDoctor(QueryVo queryVo) {
+        PageQuery<LbAppointment> query = new PageQuery(queryVo.getPageNo(),queryVo.getPageSize());
+        if (queryVo.getUserId() != null) {
+            query.setPara("userId",queryVo.getUserId());
+        }
+        query.setOrderBy("a.id desc");
+        lbAppointmentDao.selectListByDoctor(query);
+        return query;
+    }
+
+    @Override
     public ResponseResult insertAppointment(LbAppointment lbAppointment) {
         ResponseResult result = new ResponseResult();
         lbAppointmentDao.insert(lbAppointment);

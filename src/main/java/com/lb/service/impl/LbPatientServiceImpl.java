@@ -10,6 +10,7 @@ import com.lb.entity.LbDrugs;
 import com.lb.entity.LbIllness;
 import com.lb.entity.LbPatient;
 import com.lb.service.LbPatientService;
+import com.lb.vo.QueryVo;
 import com.lb.vo.ResponseResult;
 import org.beetl.sql.core.engine.PageQuery;
 import org.beetl.sql.core.query.LambdaQuery;
@@ -41,13 +42,16 @@ public class LbPatientServiceImpl implements LbPatientService {
     private LbDoctorDao lbDoctorDao;
 
     @Override
-    public PageQuery<LbPatient> findList(long pageNo, long pageSize, String name, String certId) {
-        PageQuery<LbPatient> query = new PageQuery(pageNo,pageSize);
-        if (!StringUtils.isEmpty(name)) {
-            query.setPara("name",name);
+    public PageQuery<LbPatient> findList(QueryVo queryVo) {
+        PageQuery<LbPatient> query = new PageQuery(queryVo.getPageNo(),queryVo.getPageSize());
+        if (!StringUtils.isEmpty(queryVo.getPatientName())) {
+            query.setPara("name",queryVo.getPatientName());
         }
-        if (!StringUtils.isEmpty(certId)) {
-            query.setPara("certId",certId);
+        if (!StringUtils.isEmpty(queryVo.getCertId())) {
+            query.setPara("certId",queryVo.getCertId());
+        }
+        if (queryVo.getDoctorId() != null) {
+            query.setPara("doctorId", queryVo.getDoctorId());
         }
         lbPatientDao.selectList(query);
         return query;

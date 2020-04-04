@@ -16,6 +16,9 @@ public interface LbAppointmentService {
     //查集合
     PageQuery<LbAppointment> findList(QueryVo queryVo);
 
+    //查询医生的患者预约记录
+    PageQuery<LbAppointment> findListByDoctor(QueryVo queryVo);
+
     /**
      * 保存
      */

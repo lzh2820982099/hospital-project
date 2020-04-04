@@ -2,6 +2,7 @@ package com.lb.controller.admin;
 
 import com.lb.entity.LbPatient;
 import com.lb.service.LbPatientService;
+import com.lb.vo.QueryVo;
 import com.lb.vo.ResponseResult;
 import org.beetl.sql.core.engine.PageQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,17 +24,13 @@ public class PatientController {
     private LbPatientService lbPatientService;
 
     @RequestMapping("/manage")
-    public String manage(@RequestParam(required = false, defaultValue = "1") Integer pageNo,
-                         @RequestParam(required = false, defaultValue = "5") Integer pageSize,
-                         @RequestParam(required = false) String name,
-                         @RequestParam(required = false) String certId,
-                         Model model) {
-        //查询医生的集合数据
-        PageQuery<LbPatient> page = lbPatientService.findList(pageNo,pageSize,name,certId);
+    public String manage(QueryVo queryVo,Model model) {
+        //查询患者的集合数据
+        PageQuery<LbPatient> page = lbPatientService.findList(queryVo);
         model.addAttribute("page",page);
-        model.addAttribute("pageNo",pageNo);
-        model.addAttribute("name",name);
-        model.addAttribute("certId",certId);
+        model.addAttribute("pageNo",queryVo.getPageNo());
+        model.addAttribute("name",queryVo.getPatientName());
+        model.addAttribute("certId",queryVo.getCertId());
         model.addAttribute("path","/admin/patient/manage");
         return "admin/patientManage";
     }

@@ -30,6 +30,7 @@ public class LbAppointment   {
 	医生id
 	*/
 	private Integer doctorId ;
+
 	/*
 	患者id
 	*/

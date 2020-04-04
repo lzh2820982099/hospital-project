@@ -16,4 +16,6 @@ public class QueryVo {
     private String patientName;
     private String doctorName;
     private Integer userId;
+    private String certId;
+    private Integer doctorId;
 }

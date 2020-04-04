@@ -1,6 +1,7 @@
 package com.lb.service;
 
 import com.lb.entity.LbPatient;
+import com.lb.vo.QueryVo;
 import com.lb.vo.ResponseResult;
 import org.beetl.sql.core.engine.PageQuery;
 
@@ -16,7 +17,7 @@ import java.util.Map;
  */
 public interface LbPatientService {
     //查集合
-    PageQuery<LbPatient> findList(long pageNo, long pageSize, String name, String certId);
+    PageQuery<LbPatient> findList(QueryVo queryVo);
 
     /**
      * 查询所有病人

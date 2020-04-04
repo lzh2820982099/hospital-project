@@ -64,3 +64,6 @@ selectList
         @if(!isEmpty(certId)){
             and p.cert_id=#certId#
         @}
+        @if(!isEmpty(certId)){
+            and a.doctor_id=#doctorId#
+        @}

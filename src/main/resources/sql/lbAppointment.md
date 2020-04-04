@@ -59,3 +59,21 @@ selectOne
         	lb_appointment a
         LEFT JOIN lb_patient p ON a.patient_id = p.id
         LEFT JOIN lb_doctor d ON d.id = a.doctor_id where a.id = #id#
+        
+selectListByDoctor
+===     
+        SELECT
+        	#page("a.*,p.name AS patientname,d.name AS doctorname,d.department AS department")#
+        FROM
+        	lb_appointment a
+        LEFT JOIN lb_patient p ON a.patient_id = p.id
+        LEFT JOIN lb_doctor d ON d.id = a.doctor_id where 1=1
+            @if(!isEmpty(patientName)){
+                and p.name like concat('%',#patientName#,'%')
+            @}
+            @if(!isEmpty(doctorName)){
+                and d.name like concat('%',#doctorName#,'%')
+            @}
+            @if(!isEmpty(userId)){
+                and d.user_id = #userId#
+            @}
