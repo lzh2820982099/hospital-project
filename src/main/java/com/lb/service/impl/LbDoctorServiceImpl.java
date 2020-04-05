@@ -99,4 +99,11 @@ public class LbDoctorServiceImpl implements LbDoctorService {
         query.andEq(LbDoctor::getDepartment,department);
         return query.select();
     }
+
+    @Override
+    public LbDoctor findOneByUserId(Integer userId) {
+        LambdaQuery<LbDoctor> query = lbDoctorDao.createLambdaQuery();
+        query.andEq(LbDoctor::getUserId,userId);
+        return query.single();
+    }
 }

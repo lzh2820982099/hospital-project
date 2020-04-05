@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.List;
+
 /**
  * @author 蓝莲花
  * @version 1.0.0
@@ -36,6 +38,11 @@ public class LbDrugsServiceImpl implements LbDrugsService {
             return query.desc(LbDrugs::getId).page(pageNo,pageSize);
         }
         return null;
+    }
+
+    @Override
+    public List<LbDrugs> findAll() {
+        return lbDrugsDao.all();
     }
 
     @Override

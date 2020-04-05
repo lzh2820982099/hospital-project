@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>就医</title>
-    <link rel="stylesheet" href="../css/layui.min.css">
+    <link rel="stylesheet" href="${ctxPath}/css/layui.min.css">
 </head>
 <body>
 <div class="layui-tab">
@@ -15,17 +15,17 @@
     </ul>
     <div class="layui-tab-content">
         <div class="layui-tab-item layui-show">
-            <form class="layui-form" id="form1" onsubmit="return seekinfo()">
+            <form class="layui-form" id="form1" onsubmit="return seekInfo()">
                 <table class="layui-table">
                     <tr>
                         <td>患者名称</td>
                         <td><input type="text" value="${patient.name}" readonly class="layui-input">
-                            <input type="hidden" value="${patient.id}" name="patientid" readonly class="layui-input">
+                            <input type="hidden" value="${patient.id}" name="patientId" readonly class="layui-input">
                         </td>
                     </tr>
                     <tr>
                         <td>患者描述</td>
-                        <td><textarea class="layui-input" name="describes"></textarea></td>
+                        <td><textarea class="layui-input" style="height: 100px;" name="describes"></textarea></td>
                     </tr>
                     <tr>
                         <td>确诊病情</td>
@@ -34,7 +34,9 @@
                     <tr>
                         <td>检查项目</td>
                         <td>
-                            <#list options as option><input type="checkbox" name="${"option_"+option_index}" value="${option.id}">${option.name}(${option.price}元)</#list>
+                            <%for(o in options){%>
+                                <input type="checkbox" name="${'option_' + oLP.index}" value="${o.id}"><span>${o.name}(${o.price}元)</span>
+                            <%}%>
                         </td>
                     </tr>
                     <tr>
@@ -56,14 +58,16 @@
                     <tr>
                         <td>患者名称</td>
                         <td><input type="text" value="${patient.name}" readonly class="layui-input">
-                            <input type="hidden" value="${patient.id}" name="patientid" readonly class="layui-input">
+                            <input type="hidden" value="${patient.id}" name="patientId" readonly class="layui-input">
                         </td>
                     </tr>
                     <tr>
                         <td>配药</td>
                         <td>
-                            <#list drugs as drug><input type="checkbox">${drug.name}&nbsp;&nbsp;
-                               数量：<input type="number" min="0" name="${drug.id+"_number"}" class="layui-input"><br></#list>
+                            <%for(d in drugs){%>
+                            <input type="checkbox">${d.name}&nbsp;&nbsp;
+                               数量：<input type="number" min="0" name="${d.id + '_number'}" style="width: 50px;" class="layui-input"><br>
+                            <%}%>
                         </td>
                     </tr>
                     <tr>
@@ -76,15 +80,8 @@
             <form class="layui-form" id="form3"  onsubmit="return zation()">
                 <table class="layui-table">
                     <colgroup>
-                        <col width="150" >
-                        <col width="200" >
-                        <col width="200" >
-                        <col width="200">
-                        <col width="200">
-                        <col width="200">
-                        <col width="200">
-                        <col width="200">
-                        <col>
+                        <col width="100" >
+                        <col width="250" >
                     </colgroup>
                     <tr>
                         <td style="width: 100px">楼层：</td>
@@ -129,13 +126,13 @@
                         <td>患者</td>
                         <td>
                             <input type="text" value="${patient.name}" readonly class="layui-input">
-                            <input type="hidden" value="${patient.id}" name="patientid" readonly class="layui-input">
+                            <input type="hidden" value="${patient.id}" name="patientId" readonly class="layui-input">
                         </td>
                     </tr>
                     <tr>
                         <td>患病：</td>
                         <td>
-                            <input type="text" name="medicalname"  required  lay-verify="required"  autocomplete="off" class="layui-input">
+                            <input type="text" name="medicalName"  required  lay-verify="required"  autocomplete="off" class="layui-input">
                         </td>
                     </tr>
                     <tr>
@@ -155,8 +152,8 @@
         </div>
     </div>
 </div>
-<script src="../js/jquery-3.3.1.min.js"></script>
-<script src="../js/layui.all.js"></script>
+<script src="${ctxPath}/js/jquery-3.3.1.min.js"></script>
+<script src="${ctxPath}/js/layui.all.js"></script>
 <script>
     //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
     layui.use('element', function(){
@@ -164,7 +161,7 @@
 
         //…
     });
-    function seekinfo(){
+    function seekInfo(){
         var d = {};
         var t = $('#form1').serializeArray();
         $.each(t, function() {
@@ -172,15 +169,16 @@
         });
         var json=JSON.stringify(d);
         $.ajax({
-            url:"/doctor/seekinfo",
+            url:"${ctxPath}/doctor/seekInfo",
             type:'post',
             data:json,
             contentType: "application/json;charset=utf-8",
             success:function(data){
-                console.log(data.message);
-                alert(data.message);
-                parent.location.reload();
-
+                layer.msg(data.message, {
+                    time: 2000, //2s后自动关闭
+                },function() {
+                    parent.location.reload();
+                });
             },
             error:function (data) {
                 layer.msg(data.message, {
@@ -198,19 +196,17 @@
         });
         var json=JSON.stringify(d);
         $.ajax({
-            url:"/doctor/drug",
+            url:"${ctxPath}/doctor/drug",
             type:'put',
             data:json,
             contentType: "application/json;charset=utf-8",
             success:function(data){
                 console.log(data.message);
-                alert(data.message);
-                // if(data.message=="已存在"){
-                //     $("#message").text(data.message);
-                // }
-                // else {
+                layer.msg(data.message, {
+                    time: 2000, //2s后自动关闭
+                },function() {
                     parent.location.reload();
-                // }
+                });
             },
             error:function (data) {
                 layer.msg(data.message, {
@@ -228,19 +224,17 @@
         });
         var json=JSON.stringify(d);
         $.ajax({
-            url:"/doctor/zation",
+            url:"${ctxPath}/doctor/zation",
             type:'post',
             data:json,
             contentType: "application/json;charset=utf-8",
             success:function(data){
                 console.log(data.message);
-                alert(data.message);
-                // if(data.message=="已存在"){
-                //     $("#message").text(data.message);
-                // }
-                // else {
-                parent.location.reload();
-                // }
+                layer.msg(data.message, {
+                    time: 2000, //2s后自动关闭
+                },function() {
+                    parent.location.reload();
+                });
             },
             error:function (data) {
                 layer.msg(data.message, {

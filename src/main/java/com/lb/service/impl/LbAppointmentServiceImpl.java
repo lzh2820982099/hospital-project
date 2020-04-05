@@ -45,6 +45,12 @@ public class LbAppointmentServiceImpl implements LbAppointmentService {
         if (queryVo.getUserId() != null) {
             query.setPara("userId",queryVo.getUserId());
         }
+        if (!StringUtils.isEmpty(queryVo.getPatientName())) {
+            query.setPara("patientName",queryVo.getPatientName());
+        }
+        if (!StringUtils.isEmpty(queryVo.getTime())) {
+            query.setPara("time",queryVo.getTime());
+        }
         query.setOrderBy("a.id desc");
         lbAppointmentDao.selectListByDoctor(query);
         return query;

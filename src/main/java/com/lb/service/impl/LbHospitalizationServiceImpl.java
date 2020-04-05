@@ -49,6 +49,7 @@ public class LbHospitalizationServiceImpl implements LbHospitalizationService {
         lbHospitalizationDao.insert(lbHospitalization);
         result.setCode(Global.SAVE_CODE_SUCCESS);
         result.setMessage(Global.SAVE_MSG_SUCCESS);
+        result.setData(String.valueOf(lbHospitalizationDao.insertReturnKey(lbHospitalization).getInt()));
         return result;
     }
 

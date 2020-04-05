@@ -28,3 +28,7 @@ condition
     @if(!isEmpty(price)){
      and price=#price#
     @}
+
+getTotalPrice
+===
+    select sum(price) from lb_option where id in ( #join(ids)#)

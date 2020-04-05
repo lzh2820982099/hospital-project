@@ -34,6 +34,9 @@ public class LbMedicalHistoryServiceImpl implements LbMedicalHistoryService {
         if (queryVo.getUserId() != null) {
             query.setPara("userId",queryVo.getUserId());
         }
+        if (queryVo.getPatientId() != null) {
+            query.setPara("patientId",queryVo.getPatientId());
+        }
         query.setOrderBy("m.id desc");
         lbMedicalHistoryDao.selectList(query);
         return query;

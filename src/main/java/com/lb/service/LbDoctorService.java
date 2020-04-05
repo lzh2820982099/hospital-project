@@ -44,4 +44,9 @@ public interface LbDoctorService {
      * 根据部门id获取医生
      */
     List<LbDoctor> getListByDepartment(String department);
+
+    /**
+     * 根据userID查询医生
+     */
+    LbDoctor findOneByUserId(Integer userId);
 }

@@ -9,11 +9,16 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.lb.entity.LbAppointment;
+import com.lb.entity.LbOption;
+import com.lb.entity.LbSeek;
+import com.lb.service.LbOptionService;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class PDFUtils {
     private static BaseFont bf;//创建字体
@@ -52,6 +57,50 @@ public class PDFUtils {
             document.add(pdfPTable);
             document.close();
             return "挂号单生成成功";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "系统内部错误，生成失败";
+        }
+    }
+
+    public static String createSeekInfo(LbSeek seek, LbOptionService optionService, String path) {
+        List ids=OptionUtils.getOptionIds(seek.getOptions());
+        List<LbOption> options=new ArrayList<>();
+        ids.forEach(id->{
+            LbOption option =optionService.findOne((Integer) id);
+            options.add(option);
+        });
+        Document document = new Document();
+        try {
+            String str="";
+            for(int i=0;i<options.size();i++){
+                str+=options.get(i).getName()+"----"+options.get(i).getType()+"("+options.get(i).getPrice()+"元)\n";
+            }
+            PdfWriter.getInstance(document, new FileOutputStream(path+seek.getPatientName()+DateUtils.date2String(new Date())+"就诊单.pdf"));
+            document.open();
+            PdfPTable pdfPTable = new PdfPTable(4);
+            createCell("诊断书", 4, pdfPTable, font);
+            createCell("患者姓名:", 2, pdfPTable, font);
+            createCell(seek.getPatientName(), 2, pdfPTable, font);
+            createCell("患者描述病情", 4, pdfPTable, font);
+            createCell(seek.getDescribes(), 4, pdfPTable, font);
+            createCell("初步诊断病情:", 2, pdfPTable, font);
+            createCell(seek.getIllname(), 2, pdfPTable, font);
+            createCell("需要检查的项目", 4, pdfPTable, font);
+            createCell(str, 4, pdfPTable, font);
+            createCell("诊断人:", 2, pdfPTable, font);
+            createCell(seek.getDoctorName(), 2, pdfPTable, font);
+            createCell("是否需要住院:", 2, pdfPTable, font);
+            if (seek.getDays() > 0) {
+                createCell(seek.getDays() + "天", 2, pdfPTable, font);
+            } else {
+                createCell("不需要", 2, pdfPTable, font);
+            }
+            createCell("总计:", 2, pdfPTable, font);
+            createCell(seek.getPrice() + "  (元)", 2, pdfPTable, font);
+            document.add(pdfPTable);
+            document.close();
+            return "就诊单已生成";
         } catch (Exception e) {
             e.printStackTrace();
             return "系统内部错误，生成失败";

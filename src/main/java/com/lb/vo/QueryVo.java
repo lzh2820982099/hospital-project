@@ -1,6 +1,9 @@
 package com.lb.vo;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 /**
  * @author 蓝莲花
@@ -16,6 +19,9 @@ public class QueryVo {
     private String patientName;
     private String doctorName;
     private Integer userId;
+    private Integer patientId;
     private String certId;
     private Integer doctorId;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date time;
 }

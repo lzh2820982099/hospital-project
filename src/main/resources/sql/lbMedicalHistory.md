@@ -52,3 +52,6 @@ selectList
             @if(!isEmpty(userId)){
                 and p.user_id = #userId#
             @}
+            @if(!isEmpty(patientId)){
+             and m.patient_id=#patientId#
+            @}

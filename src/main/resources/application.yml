@@ -25,3 +25,9 @@ spring:
 
 beetl:
   templatesPath: /templates/
+
+
+#文件上传路径配置
+filepath:
+  appointpdf: /Users/edwarder/upload/
+  seekpdfpath: /Users/edwarder/upload/

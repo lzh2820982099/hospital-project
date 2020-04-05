@@ -1,23 +1,21 @@
 package com.lb.controller.doctor;
 
-import com.lb.entity.LbAppointment;
-import com.lb.entity.LbDoctor;
-import com.lb.entity.LbPatient;
-import com.lb.entity.LbUser;
-import com.lb.service.LbAppointmentService;
-import com.lb.service.LbDoctorService;
-import com.lb.service.LbPatientService;
+import com.lb.common.Global;
+import com.lb.entity.*;
+import com.lb.service.*;
+import com.lb.utils.PDFUtils;
 import com.lb.vo.QueryVo;
+import com.lb.vo.ResponseResult;
 import org.beetl.sql.core.engine.PageQuery;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 蓝莲花
@@ -35,6 +33,19 @@ public class FrontDoctorController {
     private LbPatientService lbPatientService;
     @Autowired
     private LbAppointmentService lbAppointmentService;
+    @Autowired
+    private LbOptionService lbOptionService;
+    @Autowired
+    private LbDrugsService lbDrugsService;
+    @Autowired
+    private LbSeekService lbSeekService;
+    @Autowired
+    private LbHospitalizationService lbHospitalizationService;
+    @Autowired
+    private LbMedicalHistoryService lbMedicalHistoryService;
+
+    @Value("${filepath.seekpdfpath}")
+    private String path;
 
     /**
      * 医生控制台
@@ -43,11 +54,88 @@ public class FrontDoctorController {
     public String index(QueryVo queryVo, HttpSession session, Model model){
         LbUser user = (LbUser) session.getAttribute("user");
         queryVo.setUserId(user.getId());
+        LbDoctor doctor = lbDoctorService.findOneByUserId(user.getId());
 
         //获取患者信息
         PageQuery<LbAppointment> page = lbAppointmentService.findListByDoctor(queryVo);
         model.addAttribute("page", page);
+        model.addAttribute("pageNo",queryVo.getPageNo());
+        model.addAttribute("path","/doctor/index");
+        model.addAttribute("doctor", doctor);
         return "doctor/index";
+    }
+
+    /**
+     * 就医
+     */
+    @RequestMapping("/seek/{id}")
+    public String seek(@PathVariable("id") Integer patientId,Model model){
+        //获取患者信息
+        model.addAttribute("patient",lbPatientService.findOne(patientId));
+        //检查项目列表
+        model.addAttribute("options",lbOptionService.findAll());
+        //药品列表
+        model.addAttribute("drugs", lbDrugsService.findAll());
+        return "doctor/seek";
+    }
+
+    /**
+     * 就诊
+     */
+    @ResponseBody
+    @RequestMapping("/seekInfo")
+    public ResponseResult seekInfo(@RequestBody Map map,HttpSession session) {
+        return lbSeekService.save(map,session);
+    }
+
+    /**
+     * 开药
+     */
+    @ResponseBody
+    @RequestMapping("/drug")
+    public ResponseResult drug(@RequestBody Map map,HttpSession session) {
+        return lbSeekService.update(map,session);
+    }
+
+    /**
+     * 住院
+     */
+    @ResponseBody
+    @RequestMapping("/zation")
+    public ResponseResult zation(@RequestBody LbHospitalization hospitalization) {
+        ResponseResult result = lbHospitalizationService.insertHospitalization(hospitalization);
+        return result;
+    }
+
+    /**
+     * 查看患者病史
+     */
+    @RequestMapping("/medicalHistory/{id}")
+    public String medicalHistory(@PathVariable("id") Integer patientId,Model model) {
+        QueryVo queryVo = new QueryVo();
+        queryVo.setPatientId(patientId);
+        List<LbMedicalHistory> medicalHistoryList = lbMedicalHistoryService.findList(queryVo).getList();
+        model.addAttribute("medicalHistoryList",medicalHistoryList);
+        return "doctor/medicalHistory";
+    }
+
+    /**
+     *
+     * @param id
+     * @param session
+     * @return
+     */
+    @RequestMapping( value = "/printSeek/{id}",method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseResult printSeek(@PathVariable Integer id,HttpSession session){
+        LbUser user = (LbUser) session.getAttribute("user");
+        LbDoctor doctor = lbDoctorService.findOneByUserId(user.getId());
+        LbSeek seek = lbSeekService.findOneByPatientId(id,session);
+        seek.setPatientName(lbPatientService.findOne(id).getName());
+        seek.setDoctorName(doctor.getName());
+        //createSeekInfo，第三个参数填空字符串就是生成在项目根目录里面，要是想生成在别的路径，例：D:\\ 就是生成在D盘根目录
+        String message = PDFUtils.createSeekInfo(seek,lbOptionService,path);
+        return new ResponseResult(Global.SEEK_CODE_SUCCESS,message);
     }
 
     /**

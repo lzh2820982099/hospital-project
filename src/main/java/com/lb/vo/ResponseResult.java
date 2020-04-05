@@ -13,6 +13,7 @@ import lombok.Data;
 public class ResponseResult {
     private String code;
     private String message;
+    private String data;
 
     public ResponseResult() {}
 

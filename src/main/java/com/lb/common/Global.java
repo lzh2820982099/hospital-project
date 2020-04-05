@@ -14,5 +14,8 @@ public class Global {
     public static String SAVE_APPOINTMENT_SUCCESS="预约成功！";
 
     public static String APPOINTMENT_CODE_SUCCESS="501"; //挂号单生成成功code值
+    public static String SEEK_CODE_SUCCESS="601"; //就诊单打印code
+    public static String SEEK_MSG_SUCCESS="就诊单打印成功"; //就诊单打印code
+
 
 }

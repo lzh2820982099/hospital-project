@@ -27,11 +27,14 @@ public class LbSeek   {
 	
 	private Integer id ;
 	private Integer patientId ;
-	private String days ;
+	private Integer days ;
 	private String describes ;
 	private String drugs ;
 	private String illname ;
 	private String options ;
 	private BigDecimal price ;
+
+	private String patientName;
+	private String doctorName;
 	
 }

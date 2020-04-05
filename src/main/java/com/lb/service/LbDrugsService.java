@@ -4,6 +4,8 @@ import com.lb.entity.LbDrugs;
 import com.lb.vo.ResponseResult;
 import org.beetl.sql.core.engine.PageQuery;
 
+import java.util.List;
+
 /**
  * @author 蓝莲花
  * @version 1.0.0
@@ -14,6 +16,11 @@ import org.beetl.sql.core.engine.PageQuery;
 public interface LbDrugsService {
     //分页查询
     PageQuery<LbDrugs> findList(Integer pageNo, Integer pageSize, String name, String type);
+
+    /**
+     * 查询所有
+     */
+    List<LbDrugs> findAll();
 
     /**
      * 保存

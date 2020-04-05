@@ -71,8 +71,8 @@ selectListByDoctor
             @if(!isEmpty(patientName)){
                 and p.name like concat('%',#patientName#,'%')
             @}
-            @if(!isEmpty(doctorName)){
-                and d.name like concat('%',#doctorName#,'%')
+            @if(!isEmpty(time)){
+                and a.time = #time#
             @}
             @if(!isEmpty(userId)){
                 and d.user_id = #userId#

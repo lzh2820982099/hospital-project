@@ -9,37 +9,41 @@
     <link rel="stylesheet" href="${ctxPath}/css/secondary.css" type="text/css"/>
     <script language="javascript" type="text/javascript" src="${ctxPath}/js/KunyiHTML5.min.js"></script>
     <script language="javascript" type="text/javascript" src="${ctxPath}/js/Kunyilibrary.js"></script>
+    <style>
+        /*分页样式*/
+        .layui-laypage .layui-laypage-curr .layui-laypage-em {
+            background-color: #1E9FFF;
+        }
+    </style>
 </head>
 <body>
-<header>
-    <a class="logo" href="/hospital"><img src="${ctxPath}/images/logo.png" width="350" height="51"/></a>
-</header>
+
 <div class="layui-layout layui-layout-admin">
+    <!-- 引入公共头部开始 -->
+    <% include("common/header.btl"){} %>
+    <!-- 引入公共头部结束 -->
+
     <!-- 内容主体区域 -->
-    <div style="padding: 15px;">
-        <form action="/doctor/seekMedicalAdvice" method="get">
+    <div style="width: 1200px;margin: 0 auto;clear: both;">
+        <form action="${ctxPath}/doctor/index" method="get" style="margin-top: 30px;">
             <table>
                 <tr style="font-size: 16px;">
                     <td>患者:</td>
-                    <td><input name="patientname" autocomplete="off" class="layui-input lay-size=sm"></td>
+                    <td><input name="patientName" autocomplete="off" class="layui-input lay-size=sm"></td>
                     <td>&nbsp;&nbsp;预约时间:</td>
                     <td><input name="time" type="date" autocomplete="off" class="layui-input lay-size=sm"></td>
                     <td>
-                        <button class="layui-btn"style="width: 60px;margin: 0 auto;" type="submit"><i class="layui-icon">&#xe615;</i></button>
-                    </td>
-                    <td style="padding: 0 10px;">欢迎你，<span style="font-weight: bold;">王仁珍</span>&nbsp;医生</td>
-                    <td>
-                        <button class="layui-btn" style="width: 120px;margin: 0 auto;" type="button" onclick="location.href='/loginout'">退出登录</button>
+                        <button class="layui-btn layui-btn-normal"style="width: 60px;margin: 0 auto;" type="submit"><i class="layui-icon">&#xe615;</i></button>
                     </td>
                 </tr>
             </table>
         </form>
         <table class="layui-table">
             <colgroup>
-                <col width="150">
+                <col width="100">
                 <col width="200">
                 <col width="200">
-                <col width="300">
+                <col width="350">
             </colgroup>
             <thead>
             <tr>
@@ -56,35 +60,34 @@
                         <td>${p.patientName}</td>
                         <td>${p.time,'yyyy-MM-dd'}</td>
                         <td colspan="2">
-                            <button style="width: 120px;" class="layui-btn" onclick="seek(${p.patientId})">就医</button>
-                            <button style="width: 120px;" class="layui-btn" onclick="check(${p.patientId})">查看病史</button>
-                            <button style="width: 120px;" class="layui-btn" type="button" onclick="printseek(${p.patientId})">打印就诊单</button>
+                            <button style="width: 120px;" class="layui-btn layui-btn-normal" onclick="seek(${p.patientId})">就医</button>
+                            <button style="width: 120px;" class="layui-btn layui-btn-normal" onclick="check(${p.patientId})">查看病史</button>
+                            <button style="width: 120px;" class="layui-btn layui-btn-normal" type="button" onclick="printSeek(${p.patientId})">打印就诊单</button>
                         </td>
                     </tr>
                 <%}%>
             </tbody>
         </table>
+        <div id="pagination"></div>
     </div>
 </div>
-<footer>
-    <div class="footBase">
-        <h3>咨询电话：门诊导医电话 ：1111111 （上午8：00至12:00）（下午14:00至17:00）
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>医院办公室电话：111111（全天）</span></h3>
-        <p>主办单位：人民医院 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;东区地址：省市城关解放路64号 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;西区地址：省市商都大道2996号<br/>版权所有：省人民医院
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备案号：000000 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
-        <div class="QRcode"><img src="${ctxPath}/images/QRcode.jpg" width="104" height="104"><br/>手机扫一扫关注人民医院官方微信</div>
-    </div>
-</footer>
+<!-- 引入公共头部开始 -->
+<% include("common/footer.btl"){} %>
+<!-- 引入公共头部结束 -->
+<!-- 引入分页脚本 start -->
+<% include("../admin/common/page.btl"){} %>
+<!-- 引入分页脚本 end -->
+
 <script src="${ctxPath}/js/layui.all.js"></script>
 <script type="text/javascript">
     function seek(id) {
         layer.open({
             type: 2,
             title: '就医',
-            closeBtn: 0,
+            // closeBtn: 0,
             area: ['800px', '600px'],
-            content: ['/doctor/seek/' + id, 'yes'],
-            btn: ['取消'],
+            content: ['${ctxPath}/doctor/seek/' + id, 'yes'],
+            // btn: ['取消'],
             yes: function (index) {
                 //事件
                 layer.close(index);
@@ -98,7 +101,7 @@
             title: '查看病史',
             closeBtn: 0,
             area: ['800px', '600px'],
-            content: ['/doctor/medicalhistory/' + id, 'yes'],
+            content: ['${ctxPath}/doctor/medicalHistory/' + id, 'yes'],
             btn: ['取消'],
             yes: function (index) {
                 //事件
@@ -106,14 +109,14 @@
             }
         });
     }
-    function printseek(id){
+    function printSeek(id){
         $.ajax({
-            url: "/doctor/printseek/"+id,
+            url: "${ctxPath}/doctor/printSeek/"+id,
             type: 'post',
             contentType: "application/json;charset=utf-8",
             success: function (data) {
                 console.log(data.message);
-                alert(data.message);
+                layer.alert(data.message);
             },
             error: function (data) {
                 layer.msg(data.message, {
