@@ -14,15 +14,15 @@
     <meta name="Author" content="miraclevision technical team,kunyi"/>
     <meta name="Copyright" content="www.miraclevision.net,铭成奇迹"/>
     <link rel="icon" href="favicon.ico" type="image/x-icon"/>
-    <link rel="stylesheet" href="../css/normalize.css" type="text/css"/>
-    <link rel="stylesheet" href="../css/secondary.css" type="text/css"/>
-    <script language="javascript" type="text/javascript" src="../js/KunyiHTML5.min.js"></script>
-    <script language="javascript" type="text/javascript" src="../js/Kunyilibrary.js"></script>
+    <link rel="stylesheet" href="${ctxPath}/css/normalize.css" type="text/css"/>
+    <link rel="stylesheet" href="${ctxPath}/css/secondary.css" type="text/css"/>
+    <script language="javascript" type="text/javascript" src="${ctxPath}/js/KunyiHTML5.min.js"></script>
+    <script language="javascript" type="text/javascript" src="${ctxPath}/js/Kunyilibrary.js"></script>
 </head>
 <body>
 
 <header>
-    <a class="logo" href="/hospital"><img src="../images/logo.png" width="350" height="51"/></a>
+    <a class="logo" href="/hospital"><img src="${ctxPath}/images/logo.png" width="350" height="51"/></a>
     <ul>
         <li><a href="/hospital/seekguide">来院路线</a></li>
         <li><a href="/hospital/login">内部登录</a></li>
@@ -45,7 +45,7 @@
                             <dl>
                                 <dt>医院简介</dt>
                                 <dd>
-                                    <img src="../images/pic01.jpg" width="260" height="130">
+                                    <img src="${ctxPath}/images/pic01.jpg" width="260" height="130">
                                     <p>
                                         人民医院是最大的一所集医疗、教学、科研三位一体的综合性医院。始建于1952年，1995年荣获国家卫生部首批命名的“二级甲等”医院和“爱婴”医院。连年被评为市文明单位，并成为市职工医疗保险……</p>
                                     <a class="more">了解更多</a>
@@ -54,7 +54,7 @@
                             <dl class="second">
                                 <dt>领导班子</dt>
                                 <dd>
-                                    <img src="../images/pic02.jpg" width="260" height="130">
+                                    <img src="${ctxPath}/images/pic02.jpg" width="260" height="130">
                                     <h3>白金娥</h3>
                                     <p>人民医院院长 </p>
                                     <p>省市党代表,政协委员,市人大代表</p>
@@ -114,7 +114,7 @@
                             <dl>
                                 <dt>特色技术</dt>
                                 <dd><a title='神经内科脑血管造影及脑血管疾病介入治疗'><img
-                                                src="../images/pic03.jpg" width="260" height="130"></a>
+                                                src="${ctxPath}/images/pic03.jpg" width="260" height="130"></a>
                                     <h3><a
                                                 title='神经内科脑血管造影及脑血管疾病介入治疗'>神经内科脑血管造影及脑血管疾病介入治疗</a><br/><em>2016-10-24</em>
                                     </h3></dd>
@@ -133,12 +133,12 @@
                         </div>
                         <div class="nav_Route2 nav_Route8">
                             <ul>
-                                <li><a class="green" href="javascript:;"><img alt="" src="../images/ico_27.png"
+                                <li><a class="green" href="javascript:;"><img alt="" src="${ctxPath}/images/ico_27.png"
                                                                               width="50"
                                                                               height="50"></a>
                                     <h2><a href="javascript:;">信息查询</a></h2><em>Information Service</em></li>
                                 <li><a class="yellow"><img alt=""
-                                                           src="../images/ico_28.png"
+                                                           src="${ctxPath}/images/ico_28.png"
                                                            width="54" height="40"></a>
                                     <h2><a>医保服务</a></h2><em>Medical Insurance Service</em></li>
                             </ul>
@@ -160,9 +160,9 @@
                         <div class="nav_Route2 nav_Route3">
                             <ul>
                                 <li class="first"><a class="green" href="javascript:;"><img
-                                                src="../images/ico_30.png" width="50" height="54"></a>
+                                                src="${ctxPath}/images/ico_30.png" width="50" height="54"></a>
                                     <h2><a href="javascript:;">预约挂号</a></h2><em>Make an Appointment</em></li>
-                                <li><a class="yellow" href="/hospital/seekguide"><img src="../images/ico_29.png"
+                                <li><a class="yellow" href="/hospital/seekguide"><img src="${ctxPath}/images/ico_29.png"
                                                                                       width="40" height="50"></a>
                                     <h2><a href="/hospital/seekguide">坐诊时间表</a></h2><em>坐诊时间表</em></li>
                             </ul>
@@ -211,11 +211,11 @@
                         </div>
                         <div class="nav_Route2 nav_Route5">
                             <ul>
-                                <li><a class="green" ><img src="../images/ico_31.png"
+                                <li><a class="green" ><img src="${ctxPath}/images/ico_31.png"
                                                                                   width="50" height="49"></a>
                                     <h2><a >媒体报道</a></h2><em>Media Coverage</em></li>
                                 <li class="first"><a class="yellow" ><img
-                                                src="../images/ico_32.png" width="50" height="48"></a>
+                                                src="${ctxPath}/images/ico_32.png" width="50" height="48"></a>
                                     <h2><a>专题报道</a></h2><em>Special Report</em></li>
                             </ul>
                         </div>
@@ -259,7 +259,7 @@
                     </div>
                     <script type="text/javascript" id="bdshare_js" data="type=button&amp;uid=6713615"></script>
                     <script type="text/javascript" id="bdshell_js"></script>
-                    <script type="text/javascript">document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com../js/shell_v2.js?cdnversion=" + Math.ceil(new Date() / 3600000); </script>
+                    <script type="text/javascript">document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com${ctxPath}/js/shell_v2.js?cdnversion=" + Math.ceil(new Date() / 3600000); </script>
                 </div>
             </div>
             <div class="clear"></div>
@@ -270,11 +270,11 @@
                             style="font-family:SimSun;font-size:16px;">“七十不留宿，八十不留饭，九十不留坐”，可见老年人一旦上了岁数，稍不注意，就容易出现问题。常见的突发意外事件多为心脑血管方面的疾病，但也有相当多一部分是因为跌倒导致骨折，多为髋部骨折，它有“终末骨折”的骇人称号。近日我院骨二科在张国强主任带领下成功为两位高龄髋部骨折患者实施了半髋关节置换手术。如今两位患者病情平稳，已下床自主活动。</span>
                 </p>
                 <p align="justify" style="text-align:center;margin-left:0pt;text-indent:0pt;">
-                    <span style="font-family:SimSun;font-size:16px;"><img src="../images/2016102617284261.JPG"
+                    <span style="font-family:SimSun;font-size:16px;"><img src="${ctxPath}/images/2016102617284261.JPG"
                                                                           alt=""/></span>
                 </p>
                 <p align="justify" style="text-align:center;margin-left:0pt;text-indent:0pt;">
-	<span style="font-family:SimSun;font-size:16px;"><img src="../images/201611141904542.JPG" alt=""/><br/>
+	<span style="font-family:SimSun;font-size:16px;"><img src="${ctxPath}/images/201611141904542.JPG" alt=""/><br/>
 </span>
                 </p>
                 <p align="justify" style="text-align:center;margin-left:0pt;text-indent:0pt;">
@@ -285,7 +285,7 @@
                             style="font-family:SimSun;font-size:16px;">岁的老人近期下大雪不慎摔倒致左股骨粗隆间粉碎性骨折，经过半髋关节置换术后，现已可拄拐下床活动，恢复良好。</span>
                 </p>
                 <div style="text-align:center;">
-                    <img src="../images/201611141904542.JPG" alt=""/>
+                    <img src="${ctxPath}/images/201611141904542.JPG" alt=""/>
                 </div>
                 <p>
                     <br/>
@@ -327,7 +327,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>医院办公室电话：111111（全天）</span></h3>
         <p>主办单位：人民医院 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;东区地址：省市城关解放路64号 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;西区地址：省市商都大道2996号<br/>版权所有：省人民医院
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备案号：000000 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
-        <div class="QRcode"><img src="../images/QRcode.jpg" width="104" height="104"><br/>手机扫一扫关注人民医院官方微信</div>
+        <div class="QRcode"><img src="${ctxPath}/images/QRcode.jpg" width="104" height="104"><br/>手机扫一扫关注人民医院官方微信</div>
     </div>
 </footer>
 <div id="Footer_CodeDiv">
@@ -341,7 +341,7 @@
         })();
     </script>
 </div>
-<script language="javascript" type="text/javascript" src="../js/Kunyi.Common.js"></script>
-<script language="javascript" type="text/javascript" src="../js/Kunyi.Secondary.js"></script>
+<script language="javascript" type="text/javascript" src="${ctxPath}/js/Kunyi.Common.js"></script>
+<script language="javascript" type="text/javascript" src="${ctxPath}/js/Kunyi.Secondary.js"></script>
 </body>
 </html>

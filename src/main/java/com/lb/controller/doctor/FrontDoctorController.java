@@ -68,14 +68,17 @@ public class FrontDoctorController {
     /**
      * 就医
      */
-    @RequestMapping("/seek/{id}")
-    public String seek(@PathVariable("id") Integer patientId,Model model){
+    @RequestMapping("/seek/{id}/{appointmentId}")
+    public String seek(@PathVariable("id") Integer patientId,
+                       @PathVariable("appointmentId") Integer appointmentId,
+                       Model model){
         //获取患者信息
         model.addAttribute("patient",lbPatientService.findOne(patientId));
         //检查项目列表
         model.addAttribute("options",lbOptionService.findAll());
         //药品列表
         model.addAttribute("drugs", lbDrugsService.findAll());
+        model.addAttribute("appointmentId", appointmentId);
         return "doctor/seek";
     }
 
@@ -120,22 +123,34 @@ public class FrontDoctorController {
     }
 
     /**
-     *
-     * @param id
      * @param session
      * @return
      */
-    @RequestMapping( value = "/printSeek/{id}",method = RequestMethod.POST)
+    @RequestMapping( value = "/printSeek/{id}//{appointmentId}",method = RequestMethod.POST)
     @ResponseBody
-    public ResponseResult printSeek(@PathVariable Integer id,HttpSession session){
+    public ResponseResult printSeek(@PathVariable("id") Integer patientId,
+                                    @PathVariable("appointmentId") Integer appointmentId,
+                                    HttpSession session){
         LbUser user = (LbUser) session.getAttribute("user");
         LbDoctor doctor = lbDoctorService.findOneByUserId(user.getId());
-        LbSeek seek = lbSeekService.findOneByPatientId(id,session);
-        seek.setPatientName(lbPatientService.findOne(id).getName());
+        LbSeek seek = lbSeekService.findOneByPatientId(patientId,appointmentId,session);
+        seek.setPatientName(lbPatientService.findOne(patientId).getName());
         seek.setDoctorName(doctor.getName());
         //createSeekInfo，第三个参数填空字符串就是生成在项目根目录里面，要是想生成在别的路径，例：D:\\ 就是生成在D盘根目录
         String message = PDFUtils.createSeekInfo(seek,lbOptionService,path);
         return new ResponseResult(Global.SEEK_CODE_SUCCESS,message);
+    }
+
+    /**
+     * 就诊完成
+     */
+    @ResponseBody
+    @RequestMapping("/finishSeek/{id}")
+    public ResponseResult finishSeek(@PathVariable Integer id) {
+        LbAppointment appointment = new LbAppointment();
+        appointment.setId(id);
+        appointment.setStatus(Global.SEEK_CODE_DONE);
+        return lbAppointmentService.updateAppointment(appointment);
     }
 
     /**

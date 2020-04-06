@@ -41,15 +41,17 @@
         <table class="layui-table">
             <colgroup>
                 <col width="100">
+                <col width="100">
                 <col width="200">
-                <col width="200">
-                <col width="350">
+                <col width="100">
+                <col width="550">
             </colgroup>
             <thead>
             <tr>
                 <th>序号</th>
                 <th>患者名称</th>
                 <th>预约时间</th>
+                <th>就诊状态</th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -59,10 +61,20 @@
                         <td>${pLP.index}</td>
                         <td>${p.patientName}</td>
                         <td>${p.time,'yyyy-MM-dd'}</td>
+                        <td>
+                            <% if(p.status=='1'){ %>
+                            <span class="layui-badge">未就诊</span>
+                            <% }else if(p.status == '2'){ %>
+                                <span class="layui-badge layui-bg-orange">就诊中</span>
+                            <% }else { %>
+                                <span class="layui-badge layui-bg-green">已完成</span>
+                            <%}%>
+                        </td>
                         <td colspan="2">
-                            <button style="width: 120px;" class="layui-btn layui-btn-normal" onclick="seek(${p.patientId})">就医</button>
-                            <button style="width: 120px;" class="layui-btn layui-btn-normal" onclick="check(${p.patientId})">查看病史</button>
-                            <button style="width: 120px;" class="layui-btn layui-btn-normal" type="button" onclick="printSeek(${p.patientId})">打印就诊单</button>
+                            <button style="width: 120px;" class="layui-btn layui-btn-warm" onclick="seek(${p.patientId},${p.id})">就医</button>
+                            <button style="width: 120px;" class="layui-btn layui-btn-normal" onclick="check(${p.id})">查看病史</button>
+                            <button style="width: 120px;" class="layui-btn layui-btn-danger" onclick="finishSeek(${p.id})">就诊完成</button>
+                            <button style="width: 120px;" class="layui-btn" type="button" onclick="printSeek(${p.patientId},${p.id})">打印就诊单</button>
                         </td>
                     </tr>
                 <%}%>
@@ -80,13 +92,13 @@
 
 <script src="${ctxPath}/js/layui.all.js"></script>
 <script type="text/javascript">
-    function seek(id) {
+    function seek(id,appointmentId) {
         layer.open({
             type: 2,
             title: '就医',
             // closeBtn: 0,
             area: ['800px', '600px'],
-            content: ['${ctxPath}/doctor/seek/' + id, 'yes'],
+            content: ['${ctxPath}/doctor/seek/' + id + "/" + appointmentId, 'yes'],
             // btn: ['取消'],
             yes: function (index) {
                 //事件
@@ -109,9 +121,37 @@
             }
         });
     }
-    function printSeek(id){
+
+    function finishSeek(id){
+        layer.confirm('确认就诊完成？', {
+            btn: ['确认','取消'] //按钮
+        }, function(){
+            $.ajax({
+                url: "${ctxPath}/doctor/finishSeek/"+id,
+                type: 'post',
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+                    console.log(data.message);
+                    layer.msg("就诊完成",{time:1000},function(){
+                        window.location.reload();
+                    })
+                },
+                error: function (data) {
+                    layer.msg(data.message, {
+                        time: 1000, //2s后自动关闭
+                    });
+                }
+            });
+            return false
+        }, function(){
+            layer.msg('继续就诊', {icon: 1,time:1000});
+        });
+
+    }
+
+    function printSeek(id,appointmentId){
         $.ajax({
-            url: "${ctxPath}/doctor/printSeek/"+id,
+            url: "${ctxPath}/doctor/printSeek/" + id + "/" + appointmentId,
             type: 'post',
             contentType: "application/json;charset=utf-8",
             success: function (data) {

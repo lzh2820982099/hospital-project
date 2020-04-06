@@ -21,6 +21,7 @@
                         <td>患者名称</td>
                         <td><input type="text" value="${patient.name}" readonly class="layui-input">
                             <input type="hidden" value="${patient.id}" name="patientId" readonly class="layui-input">
+                            <input type="hidden" value="${appointmentId}" name="appointmentId" readonly class="layui-input">
                         </td>
                     </tr>
                     <tr>

@@ -46,6 +46,11 @@ public class LbAppointment   {
 	private Date time ;
 
 	/*
+	就诊状态
+	 */
+	private String status;
+
+	/*
 	患者名称
 	 */
 	private String patientName;

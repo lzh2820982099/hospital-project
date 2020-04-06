@@ -22,7 +22,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         HttpSession session = request.getSession();
         LbUser user = (LbUser) session.getAttribute("user");
         if (user == null) {//重定向到登录视图
-            response.sendRedirect(request.getContextPath() + "/home/loginRegiterPage");
+            response.sendRedirect(request.getContextPath() + "/home/user/loginRegisterPage");
             return false;
         }
         return true;

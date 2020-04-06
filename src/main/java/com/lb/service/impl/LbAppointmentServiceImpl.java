@@ -68,7 +68,7 @@ public class LbAppointmentServiceImpl implements LbAppointmentService {
     @Override
     public ResponseResult updateAppointment(LbAppointment lbAppointment) {
         ResponseResult result = new ResponseResult();
-        lbAppointmentDao.updateById(lbAppointment);
+        lbAppointmentDao.updateTemplateById(lbAppointment);
         result.setCode(Global.SAVE_CODE_SUCCESS);
         result.setMessage(Global.SAVE_MSG_SUCCESS);
         return result;

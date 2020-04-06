@@ -6,7 +6,7 @@
     <li class="layui-nav-item" lay-unselect="" style="float: right;margin-right: 200px;">
         <a href="javascript:;"><span style="font-weight: bold;">${doctor.name}</span>&nbsp;医生</a>
         <dl class="layui-nav-child">
-            <dd><a href="${ctxPath}/home/logout">退出登录</a></dd>
+            <dd><a href="${ctxPath}/home/user/logout">退出登录</a></dd>
         </dl>
     </li>
 </ul>

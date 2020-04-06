@@ -22,5 +22,5 @@ public interface LbSeekService {
     ResponseResult update(Map map, HttpSession session);
 
     //获取一条记录
-    LbSeek findOneByPatientId(Integer patientId,HttpSession session);
+    LbSeek findOneByPatientId(Integer patientId,Integer appointmentId,HttpSession session);
 }

@@ -9,7 +9,7 @@
     <li class="layui-nav-item" lay-unselect="">
         <a href="javascript:;">${session.user.username}</a>
         <dl class="layui-nav-child">
-            <dd><a href="${ctxPath}/home/logout">退出登录</a></dd>
+            <dd><a href="${ctxPath}/home/user/logout">退出登录</a></dd>
         </dl>
     </li>
 </ul>

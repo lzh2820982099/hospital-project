@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
  * @createTime 2020年03月25日 17:48:00
  */
 @Controller
-@RequestMapping("/home")
+@RequestMapping("/home/user")
 public class LoginController {
     @Autowired
     private LbUserService lbUserService;
@@ -28,9 +28,9 @@ public class LoginController {
     /**
      * 登录页面
      */
-    @RequestMapping("/loginRegiterPage")
-    public String loginRegiterPage() {
-        return "home/login&regist";
+    @RequestMapping("/loginRegisterPage")
+    public String loginRegisterPage() {
+        return "home/login&register";
     }
 
     /**
@@ -39,7 +39,6 @@ public class LoginController {
     @ResponseBody
     @RequestMapping("/login")
     public ResponseResult login(@RequestBody LbUser user, HttpSession session) {
-        System.out.println("======>" + user);
         return lbUserService.checkUser(user,session);
     }
 
@@ -47,8 +46,8 @@ public class LoginController {
      * 注册用户
      */
     @ResponseBody
-    @RequestMapping("/regist")
-    public ResponseResult regist(@RequestBody ActiveUser activeUser){
+    @RequestMapping("/register")
+    public ResponseResult register(@RequestBody ActiveUser activeUser){
         return lbUserService.registUser(activeUser);
     }
 
@@ -59,6 +58,6 @@ public class LoginController {
     public String logout(HttpSession session) {
         // 清除sessin
         session.invalidate();
-        return "redirect:/home/loginRegiterPage";
+        return "redirect:/home/user/loginRegisterPage";
     }
 }

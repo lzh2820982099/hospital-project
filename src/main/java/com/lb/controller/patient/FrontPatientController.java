@@ -77,6 +77,7 @@ public class FrontPatientController {
     @ResponseBody
     @RequestMapping(value = "/appointment", method = RequestMethod.POST)
     public ResponseResult save(@RequestBody LbAppointment appointment) {
+        appointment.setStatus(Global.SEEK_CODE_NONE);
         Integer appointmentId = lbAppointmentService.insertReturnId(appointment);
         LbPatient patient = new LbPatient();
         patient.setId(appointment.getPatientId());

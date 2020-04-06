@@ -27,6 +27,7 @@ public class LbSeek   {
 	
 	private Integer id ;
 	private Integer patientId ;
+	private Integer appointmentId ;
 	private Integer days ;
 	private String describes ;
 	private String drugs ;

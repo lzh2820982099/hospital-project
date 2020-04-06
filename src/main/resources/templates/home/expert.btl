@@ -13,16 +13,16 @@
     </noscript>
     <meta name="Author" content="miraclevision technical team,kunyi"/>
     <meta name="Copyright" content="www.miraclevision.net,铭成奇迹"/>
-    <link rel="stylesheet" href="../css/normalize.css" type="text/css"/>
-    <link rel="stylesheet" href="../css/secondary.css" type="text/css"/>
-    <script language="javascript" type="text/javascript" src="../js/KunyiHTML5.min.js"></script>
-    <script language="javascript" type="text/javascript" src="../js/Kunyilibrary.js"></script>
+    <link rel="stylesheet" href="${ctxPath}/css/normalize.css" type="text/css"/>
+    <link rel="stylesheet" href="${ctxPath}/css/secondary.css" type="text/css"/>
+    <script language="javascript" type="text/javascript" src="${ctxPath}/js/KunyiHTML5.min.js"></script>
+    <script language="javascript" type="text/javascript" src="${ctxPath}/js/Kunyilibrary.js"></script>
 </head>
 <body>
 
 <header>
         <a class="logo" href="/hospital">
-            <img src="../images/logo.png" width="300" height="70"/>
+            <img src="${ctxPath}/images/logo.png" width="300" height="70"/>
         </a>
 </header>
 <nav>
@@ -63,25 +63,25 @@
                     <div class="list">
                         <ul>
                             <li>
-                                <a><img src="../images/201611141810044.JPG" alt="李雷"
+                                <a><img src="${ctxPath}/images/201611141810044.JPG" alt="李雷"
                                         width="150" height="179"></a>
                                 <div class="txt03"><em>李雷</em>
                                     <p></p></div>
                             </li>
                             <li>
-                                <a><img src="../images/201611141904542.JPG" alt="韩梅梅 "
+                                <a><img src="${ctxPath}/images/201611141904542.JPG" alt="韩梅梅 "
                                         width="150" height="179"></a>
                                 <div class="txt03"><em>韩梅梅 </em>
                                     <p></p></div>
                             </li>
                             <li>
-                                <a><img src="../images/2016082914484422.jpg" alt="王一一"
+                                <a><img src="${ctxPath}/images/2016082914484422.jpg" alt="王一一"
                                         width="150" height="179"></a>
                                 <div class="txt03"><em>王一一</em>
                                     <p></p></div>
                             </li>
                             <li>
-                                <a><img src="../images/2016082917221938.jpg" alt="刘瑞"
+                                <a><img src="${ctxPath}/images/2016082917221938.jpg" alt="刘瑞"
                                         width="150" height="179"></a>
                                 <div class="txt03"><em>刘瑞</em>
                                     <p></p></div>
@@ -94,25 +94,25 @@
                     <div class="list">
                         <ul>
                          <li>
-                          <a><img src="../images/2016083014243017.jpg" alt="王五"
+                          <a><img src="${ctxPath}/images/2016083014243017.jpg" alt="王五"
                                         width="150" height="179"></a>
                                 <div class="txt03"><em>王五</em>
                                     <p></p></div>
                             </li>
                             <li>
-                                <a><img src="../images/2016083015093024.jpg" alt="王青"
+                                <a><img src="${ctxPath}/images/2016083015093024.jpg" alt="王青"
                                         width="150" height="179"></a>
                                 <div class="txt03"><em>王青</em>
                                     <p></p></div>
                             </li>
                             <li>
-                                <a><img src="../images/2016102616584315.JPG" alt="赵志"
+                                <a><img src="${ctxPath}/images/2016102616584315.JPG" alt="赵志"
                                         width="150" height="179"></a>
                                 <div class="txt03"><em>赵志</em>
                                     <p></p></div>
                             </li>
                              <li>
-                                <a><img src="../images/2016102617041418.jpg" alt="丁丽"
+                                <a><img src="${ctxPath}/images/2016102617041418.jpg" alt="丁丽"
                                         width="150" height="179"></a>
                                 <div class="txt03"><em>丁丽</em>
                                     <p></p></div>
@@ -127,31 +127,31 @@
                     <div class="list">
                         <ul>                           
                             <li>
-                                <a><img src="../images/2016102617103196.JPG" alt="杨丽娟"
+                                <a><img src="${ctxPath}/images/2016102617103196.JPG" alt="杨丽娟"
                                         width="150" height="179"></a>
                                 <div class="txt03"><em>杨丽娟</em>
                                     <p></p></div>
                             </li>
                             <li>
-                                <a><img src="../images/2016102617183251.JPG" alt="郝新景"
+                                <a><img src="${ctxPath}/images/2016102617183251.JPG" alt="郝新景"
                                         width="150" height="179"></a>
                                 <div class="txt03"><em>郝新景</em>
                                     <p></p></div>
                             </li>
                             <li>
-                                <a><img src="../images/2016102617284261.JPG" alt="邢一川"
+                                <a><img src="${ctxPath}/images/2016102617284261.JPG" alt="邢一川"
                                         width="150" height="179"></a>
                                 <div class="txt03"><em>邢一川</em>
                                     <p></p></div>
                             </li>
                             <li>
-                                <a><img src="../images/2016102617350647.JPG" alt="朱铭"
+                                <a><img src="${ctxPath}/images/2016102617350647.JPG" alt="朱铭"
                                         width="150" height="179"></a>
                                 <div class="txt03"><em>朱铭</em>
                                     <p></p></div>
                             </li>
                             <li>
-                                <a><img src="../images/2016102617463898.JPG" alt="李鑫"
+                                <a><img src="${ctxPath}/images/2016102617463898.JPG" alt="李鑫"
                                         width="150" height="179"></a>
                                 <div class="txt03"><em>李鑫</em>
                                     <p></p></div>
@@ -166,37 +166,37 @@
                     <div class="list">
                         <ul>
                             <li>
-                                <a><img src="../images/2016102817232622.JPG" alt="邵一博 "
+                                <a><img src="${ctxPath}/images/2016102817232622.JPG" alt="邵一博 "
                                         width="150" height="179"></a>
                                 <div class="txt03"><em>邵一博 </em>
                                     <p></p></div>
                             </li>
                             <li>
-                                <a><img src="../images/2016102918135639.JPG" alt="丁晓"
+                                <a><img src="${ctxPath}/images/2016102918135639.JPG" alt="丁晓"
                                         width="150" height="179"></a>
                                 <div class="txt03"><em>丁晓</em>
                                     <p></p></div>
                             </li>
                             <li>
-                                <a><img src="../images/2016103008565749.JPG" alt="师诗"
+                                <a><img src="${ctxPath}/images/2016103008565749.JPG" alt="师诗"
                                         width="150" height="179"></a>
                                 <div class="txt03"><em>师诗</em>
                                     <p></p></div>
                             </li>
                             <li>
-                                <a><img src="../images/2016103009435590.JPG" alt="马勇"
+                                <a><img src="${ctxPath}/images/2016103009435590.JPG" alt="马勇"
                                         width="150" height="179"></a>
                                 <div class="txt03"><em>马勇</em>
                                     <p></p></div>
                             </li>
                             <li>
-                                <a><img src="../images/2016110110441567.JPG" alt="王昊 "
+                                <a><img src="${ctxPath}/images/2016110110441567.JPG" alt="王昊 "
                                         width="150" height="179"></a>
                                 <div class="txt03"><em>王昊</em>
                                     <p></p></div>
                             </li>
                             <li>
-                                <a><img src="../images/2016111417035353.JPG" alt="毛磊 "
+                                <a><img src="${ctxPath}/images/2016111417035353.JPG" alt="毛磊 "
                                         width="150" height="179"></a>
                                 <div class="txt03"><em>毛磊 </em>
                                     <p></p></div>
@@ -217,7 +217,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>医院办公室电话：111111（全天）</span></h3>
         <p>主办单位：人民医院 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;东区地址：省市城关解放路64号 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;西区地址：省市商都大道2996号<br/>版权所有：省人民医院
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备案号：000000 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
-        <div class="QRcode"><img src="../images/QRcode.jpg" width="104" height="104"><br/>手机扫一扫关注人民医院官方微信</div>
+        <div class="QRcode"><img src="${ctxPath}/images/QRcode.jpg" width="104" height="104"><br/>手机扫一扫关注人民医院官方微信</div>
     </div>
 </footer>
 <div id="Footer_CodeDiv">
@@ -231,7 +231,7 @@
         })();
     </script>
 </div>
-<script language="javascript" type="text/javascript" src="../js/Kunyi.Common.js"></script>
-<script language="javascript" type="text/javascript" src="../js/Kunyi.Secondary.js"></script>
+<script language="javascript" type="text/javascript" src="${ctxPath}/js/Kunyi.Common.js"></script>
+<script language="javascript" type="text/javascript" src="${ctxPath}/js/Kunyi.Secondary.js"></script>
 </body>
 </html>

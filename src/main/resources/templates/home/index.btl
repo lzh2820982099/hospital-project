@@ -8,36 +8,36 @@
     <noscript>
         <meta http-equiv="refresh" content="0; url=/noscript.htm"/>
     </noscript>
-    <link rel="stylesheet" href="../css/normalize.css" type="text/css"/>
-    <link rel="stylesheet" href="../css/index.css" type="text/css"/>
-    <script language="javascript" type="text/javascript" src="../js/KunyiHTML5.min.js"></script>
-    <script language="javascript" type="text/javascript" src="../js/Kunyilibrary.js"></script>
-    <script language="javascript" type="text/javascript" src="../js/Kunyi.Common.js"></script>
-    <script language="javascript" type="text/javascript" src="../js/Kunyi.Index.js"></script>
+    <link rel="stylesheet" href="${ctxPath}/css/normalize.css" type="text/css"/>
+    <link rel="stylesheet" href="${ctxPath}/css/index.css" type="text/css"/>
+    <script language="javascript" type="text/javascript" src="${ctxPath}/js/KunyiHTML5.min.js"></script>
+    <script language="javascript" type="text/javascript" src="${ctxPath}/js/Kunyilibrary.js"></script>
+    <script language="javascript" type="text/javascript" src="${ctxPath}/js/Kunyi.Common.js"></script>
+    <script language="javascript" type="text/javascript" src="${ctxPath}/js/Kunyi.Index.js"></script>
 </head>
 <body>
 
 <header>
     <a class="logo" href="/hospital">
-        <img src="../images/logo.png" width="300" height="70"/>
+        <img src="${ctxPath}/images/logo.png" width="300" height="70"/>
     </a>
 </header>
-
 <nav>
     <div class="nav">
         <ul>
-            <li class="PMenu current"><a href="/hospital" class="PAMenu">网站首页</a></li>
-            <li class="PMenu"><a href="/hospital/introduction" id="Nav_AMenu0" class="PAMenu" title="医院简介">医院简介</a></li>
-            <li class="PMenu"><a href="/hospital/expert" id="Nav_AMenu1" class="PAMenu" title="患者服务">专家团队</a></li>
-            <li class="PMenu"><a href="/hospital/service" id="Nav_AMenu1" class="PAMenu" title="患者服务">患者服务</a></li>
-            <li class="PMenu"><a href="/hospital/seekguide" id="Nav_AMenu2" class="PAMenu" title="坐诊时间">坐诊时间</a></li>
-            <li class="PMenu"><a href="/hospital/guide" id="Nav_AMenu2" class="PAMenu" title="就医指南">就医指南</a></li>
-            <li class="PMenu"><a href="/hospital/news" id="Nav_AMenu4" class="PAMenu" title="新闻中心">新闻中心</a></li>
-            <li class="PMenu"><a href="/hospital/login" id="Nav_AMenu5" class="PAMenu" title="登录注册">登录注册</a></li>
+            <li class="PMenu current"><a href="${ctxPath}/hospital" class="PAMenu">网站首页</a></li>
+            <li class="PMenu"><a href="${ctxPath}/hospital/introduction" id="Nav_AMenu0" class="PAMenu" title="医院简介">医院简介</a></li>
+            <li class="PMenu"><a href="${ctxPath}/hospital/expert" id="Nav_AMenu1" class="PAMenu" title="患者服务">专家团队</a></li>
+            <li class="PMenu"><a href="${ctxPath}/hospital/service" id="Nav_AMenu2" class="PAMenu" title="患者服务">患者服务</a></li>
+            <li class="PMenu"><a href="${ctxPath}/hospital/seekguide" id="Nav_AMenu3" class="PAMenu" title="坐诊时间">坐诊时间</a></li>
+            <li class="PMenu"><a href="${ctxPath}/hospital/guide" id="Nav_AMenu4" class="PAMenu" title="就医指南">就医指南</a></li>
+            <li class="PMenu"><a href="${ctxPath}/hospital/news" id="Nav_AMenu5" class="PAMenu" title="新闻中心">新闻中心</a></li>
+            <li class="PMenu"><a href="${ctxPath}/hospital/login" id="Nav_AMenu6" class="PAMenu" title="登录注册">登录注册</a></li>
         </ul>
         <div class="clear"></div>
     </div>
 </nav>
+
 <section class="bannerBase">
     <div class="quickMenu">
         <div class="title">快捷导航</div>
@@ -54,22 +54,22 @@
         <ul class="pic">
 
             <li><a href="http://www.zmxrmyy.org/NewsDetail-274.html" target="_blank"
-                   title="我院举办专题讲座"><img src="../images/2017011216421587.jpg" width="848"
+                   title="我院举办专题讲座"><img src="${ctxPath}/images/2017011216421587.jpg" width="848"
                                          height="440" alt="我院举办专题讲座"/></a></li>
             <li><a href="http://www.zmxrmyy.com/NewsDetail-243.html" target="_blank" title="医者仁心！"><img
-                            src="../images/2016111822464861.jpg" width="848" height="440"
+                            src="${ctxPath}/images/2016111822464861.jpg" width="848" height="440"
                             alt="医者仁心!"/></a></li>
             <li><a href="http://www.zmxrmyy.org/NewsDetail-274.html" target="_blank"
-                   title="我院举办专题讲座"><img src="../images/2017011216421587.jpg" width="848"
+                   title="我院举办专题讲座"><img src="${ctxPath}/images/2017011216421587.jpg" width="848"
                                          height="440" alt="我院举办专题讲座"/></a></li>
             <li><a href="http://www.zmxrmyy.com/NewsDetail-243.html" target="_blank" title="医者仁心！"><img
-                            src="../images/2016111822464861.jpg" width="848" height="440"
+                            src="${ctxPath}/images/2016111822464861.jpg" width="848" height="440"
                             alt="医者仁心”！"/></a></li>
             <li><a href="http://www.zmxrmyy.org/NewsDetail-274.html" target="_blank"
-                   title="我院举办专题讲座"><img src="../images/2017011216421587.jpg" width="848"
+                   title="我院举办专题讲座"><img src="${ctxPath}/images/2017011216421587.jpg" width="848"
                                          height="440" alt="我院举办专题讲座"/></a></li>
             <li><a href="http://www.zmxrmyy.com/NewsDetail-243.html" target="_blank" title="医者仁心！"><img
-                            src="../images/2016111822464861.jpg" width="848" height="440"
+                            src="${ctxPath}/images/2016111822464861.jpg" width="848" height="440"
                             alt="医者仁心”！"/></a></li>
         </ul>
         <div class="txt-bg"></div>
@@ -177,13 +177,13 @@
     </div>
     <div class="experts">
         <ul data-num="0">
-            <li><a title="李雷"><img src="../images/201611141810044.JPG" alt="李雷"
+            <li><a title="李雷"><img src="${ctxPath}/images/201611141810044.JPG" alt="李雷"
                                    width="120" height="179"></a>
                 <div class="txt"><em>李雷</em>
                     <p>内科 主任医师</p></div>
 
             </li>
-            <li><a title="韩梅梅"><img src="../images/201611141904542.JPG"
+            <li><a title="韩梅梅"><img src="${ctxPath}/images/201611141904542.JPG"
                                     alt="韩梅梅" width="120" height="179"></a>
                 <div class="txt"><em>韩梅梅</em>
                     <p>内科 副主任医师</p></div>
@@ -191,36 +191,36 @@
             </li>
 
 
-            <li><a title="王五"><img src="../images/2016082917221938.jpg"
+            <li><a title="王五"><img src="${ctxPath}/images/2016082917221938.jpg"
                                    alt="王五" width="120" height="179"></a>
                 <div class="txt"><em>王五</em>
                     <p>普外科 主任医师</p></div>
 
             </li>
-            <li><a title="王青"><img src="../images/2016083014243017.jpg"
+            <li><a title="王青"><img src="${ctxPath}/images/2016083014243017.jpg"
                                    alt="王青" width="120" height="179"></a>
                 <div class="txt"><em>王青</em>
                     <p>普外科 副主任医师</p></div>
 
             </li>
-            <li><a title="杨丽娟"><img src="../images/2016102617041418.jpg"
+            <li><a title="杨丽娟"><img src="${ctxPath}/images/2016102617041418.jpg"
                                     alt="杨丽娟" width="120" height="179"></a>
                 <div class="txt"><em>杨丽娟</em>
                     <p>急诊 副主任医师</p></div>
 
             </li>
-            <li><a title="郝新景"><img src="../images/2016102617103196.JPG"
+            <li><a title="郝新景"><img src="${ctxPath}/images/2016102617103196.JPG"
                                     alt="郝新景" width="120" height="179"></a>
                 <div class="txt"><em>郝新景</em>
                     <p>急诊 副主任医师</p></div>
             </li>
-            <li><a title="丁晓"><img src="../images/2016102617183251.JPG" alt="丁晓"
+            <li><a title="丁晓"><img src="${ctxPath}/images/2016102617183251.JPG" alt="丁晓"
                                    width="120" height="179"></a>
                 <div class="txt"><em>丁晓</em>
                     <p>急诊 主任医师</p></div>
 
             </li>
-            <li><a title="邵一博"><img src="../images/2016102617284261.JPG"
+            <li><a title="邵一博"><img src="${ctxPath}/images/2016102617284261.JPG"
                                     alt="邵一博" width="122" height="179"></a>
                 <div class="txt"><em>邵一博</em>
                     <p>急诊 副主任医师</p></div>
@@ -274,7 +274,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>医院办公室电话：111111（全天）</span></h3>
         <p>主办单位：人民医院 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;东区地址：省市城关解放路64号 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;西区地址：省市商都大道2996号<br/>版权所有：省人民医院
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备案号：000000 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
-        <div class="QRcode"><img src="../images/QRcode.jpg" width="104" height="104"><br/>手机扫一扫关注人民医院官方微信</div>
+        <div class="QRcode"><img src="${ctxPath}/images/QRcode.jpg" width="104" height="104"><br/>手机扫一扫关注人民医院官方微信</div>
     </div>
 </footer>
 

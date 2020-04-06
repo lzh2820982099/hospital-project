@@ -15,16 +15,16 @@
     <meta name="Copyright" content="www.miraclevision.net,铭成奇迹"/>
     <#--<link rel="icon" href="favicon.ico" type="image/x-icon" />-->
     <#--<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />-->
-    <link rel="stylesheet" href="../css/normalize.css" type="text/css"/>
-    <link rel="stylesheet" href="../css/secondary.css" type="text/css"/>
-    <script language="javascript" type="text/javascript" src="../js/KunyiHTML5.min.js"></script>
-    <script language="javascript" type="text/javascript" src="../js/Kunyilibrary.js"></script>
+    <link rel="stylesheet" href="${ctxPath}/css/normalize.css" type="text/css"/>
+    <link rel="stylesheet" href="${ctxPath}/css/secondary.css" type="text/css"/>
+    <script language="javascript" type="text/javascript" src="${ctxPath}/js/KunyiHTML5.min.js"></script>
+    <script language="javascript" type="text/javascript" src="${ctxPath}/js/Kunyilibrary.js"></script>
 </head>
 <body>
 
 <header>
         <a class="logo" href="/hospital">
-            <img src="../images/logo.png" width="300" height="70"/>
+            <img src="${ctxPath}/images/logo.png" width="300" height="70"/>
         </a>
 </header>
 
@@ -246,7 +246,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>医院办公室电话：111111（全天）</span></h3>
         <p>主办单位：人民医院 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;东区地址：省市城关解放路64号 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;西区地址：省市商都大道2996号<br/>版权所有：省人民医院
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备案号：000000 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
-        <div class="QRcode"><img src="../images/QRcode.jpg" width="104" height="104"><br/>手机扫一扫关注人民医院官方微信</div>
+        <div class="QRcode"><img src="${ctxPath}/images/QRcode.jpg" width="104" height="104"><br/>手机扫一扫关注人民医院官方微信</div>
     </div>
 </footer>
 
@@ -261,7 +261,7 @@
         })();
     </script>
 </div>
-<script language="javascript" type="text/javascript" src="../js/Kunyi.Common.js"></script>
-<script language="javascript" type="text/javascript" src="../js/Kunyi.Secondary.js"></script>
+<script language="javascript" type="text/javascript" src="${ctxPath}/js/Kunyi.Common.js"></script>
+<script language="javascript" type="text/javascript" src="${ctxPath}/js/Kunyi.Secondary.js"></script>
 </body>
 </html>
