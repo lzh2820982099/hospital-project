@@ -17,26 +17,9 @@
 </head>
 <body>
 
-<header>
-    <a class="logo" href="/hospital">
-        <img src="${ctxPath}/images/logo.png" width="300" height="70"/>
-    </a>
-</header>
-<nav>
-    <div class="nav">
-        <ul>
-            <li class="PMenu current"><a href="${ctxPath}/hospital" class="PAMenu">网站首页</a></li>
-            <li class="PMenu"><a href="${ctxPath}/hospital/introduction" id="Nav_AMenu0" class="PAMenu" title="医院简介">医院简介</a></li>
-            <li class="PMenu"><a href="${ctxPath}/hospital/expert" id="Nav_AMenu1" class="PAMenu" title="患者服务">专家团队</a></li>
-            <li class="PMenu"><a href="${ctxPath}/hospital/service" id="Nav_AMenu2" class="PAMenu" title="患者服务">患者服务</a></li>
-            <li class="PMenu"><a href="${ctxPath}/hospital/seekguide" id="Nav_AMenu3" class="PAMenu" title="坐诊时间">坐诊时间</a></li>
-            <li class="PMenu"><a href="${ctxPath}/hospital/guide" id="Nav_AMenu4" class="PAMenu" title="就医指南">就医指南</a></li>
-            <li class="PMenu"><a href="${ctxPath}/hospital/news" id="Nav_AMenu5" class="PAMenu" title="新闻中心">新闻中心</a></li>
-            <li class="PMenu"><a href="${ctxPath}/hospital/login" id="Nav_AMenu6" class="PAMenu" title="登录注册">登录注册</a></li>
-        </ul>
-        <div class="clear"></div>
-    </div>
-</nav>
+<!-- 引入公共头部开始 -->
+<% include("common/header.btl"){} %>
+<!-- 引入公共头部结束 -->
 
 <section class="bannerBase">
     <div class="quickMenu">
@@ -262,21 +245,15 @@
             <h3>中医康复科<em></em>
                 皮肤科</h3></br>
             <h3>妇科<em></em>
-                呼吸内科<h3>
+                呼吸内科</h3>
         </div>
     </div>
     <div class="clear"></div>
 </section>
 
-<footer>
-    <div class="footBase">
-        <h3>咨询电话：门诊导医电话 ：1111111 （上午8：00至12:00）（下午14:00至17:00）
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>医院办公室电话：111111（全天）</span></h3>
-        <p>主办单位：人民医院 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;东区地址：省市城关解放路64号 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;西区地址：省市商都大道2996号<br/>版权所有：省人民医院
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备案号：000000 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
-        <div class="QRcode"><img src="${ctxPath}/images/QRcode.jpg" width="104" height="104"><br/>手机扫一扫关注人民医院官方微信</div>
-    </div>
-</footer>
+<!-- 引入公共头部开始 -->
+<% include("common/footer.btl"){} %>
+<!-- 引入公共头部结束 -->
 
 <div id="Footer_CodeDiv">
     <script>
