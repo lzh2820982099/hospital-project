@@ -25,12 +25,12 @@
     <div class="quickMenu">
         <div class="title">快捷导航</div>
         <ul>
-            <li><a href="/hospital/expert"><span class="style01"></span>专家介绍</a></li>
-            <li class="grey"><a href="/hospital/service"><span class="style02"></span>科室介绍</a></li>
-            <li class="grey bgff"><a href="/hospital/guide"><span class="style03"></span>就医指南</a></li>
-            <li class="bggrey"><a href="/hospital/seekguide"><span class="style04"></span>坐诊时间</a></li>
-            <li class="bggrey"><a href="/hospital/guide"><span class="style06"></span>来院路线</a></li>
-            <li class="grey"><a href="/patient/search"><span class="style08"></span>信息查询</a></li>
+            <li><a href="${ctxPath}/home/expert"><span class="style01"></span>专家介绍</a></li>
+            <li class="grey"><a href="${ctxPath}/home/service"><span class="style02"></span>科室介绍</a></li>
+            <li class="grey bgff"><a href="${ctxPath}/home/guide"><span class="style03"></span>就医指南</a></li>
+            <li class="bggrey"><a href="${ctxPath}/home/seekGuide"><span class="style04"></span>坐诊时间</a></li>
+            <li class="bggrey"><a href="${ctxPath}/home/guide"><span class="style06"></span>来院路线</a></li>
+            <li class="grey"><a href="${ctxPath}/home/user/login"><span class="style08"></span>信息查询</a></li>
         </ul>
     </div>
     <div class="focusBox">

@@ -21,7 +21,6 @@ class LbPatientTests {
         Query<LbPatient> query = lbPatientDao.createQuery();
         query.appendSql("p left join lb_appointment a on p.appointment_id=a.id\n" +
                 "    left join lb_doctor d on d.id=a.doctor_id ");
-        query.unique("name1");
         PageQuery<LbPatient> page = query.orderBy("p.id desc").page(1,5);
         page.getList().forEach(System.out::println);
     }

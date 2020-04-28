@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
@@ -28,7 +29,7 @@ public class LoginController {
     /**
      * 登录页面
      */
-    @RequestMapping("/loginRegisterPage")
+    @RequestMapping("/login")
     public String loginRegisterPage() {
         return "home/login&register";
     }
@@ -37,7 +38,7 @@ public class LoginController {
      * 请求登录
      */
     @ResponseBody
-    @RequestMapping("/login")
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseResult login(@RequestBody LbUser user, HttpSession session) {
         return lbUserService.checkUser(user,session);
     }
