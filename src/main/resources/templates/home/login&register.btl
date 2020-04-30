@@ -72,7 +72,7 @@
 				  console.log(data.message);
 				  if(data.code=="102" || data.code=="103" || data.code=="104"){
 					  alert('注册成功！！！\n请返回登录页面进行登录或继续注册')
-					  location.href="/hospital-sys/hospital/login";
+					  location.href="${ctxPath}/home/user/login";
 				  }
 				  else {
 					  $("#message2").text(data.message);

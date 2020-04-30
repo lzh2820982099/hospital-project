@@ -114,6 +114,9 @@ public class LbUserServiceImpl implements LbUserService {
                 result.setCode("105");
                 result.setMessage("身份证被占用！");
             }
+        } else { //身份证还未注册，即没有注册医生，也没注册患者
+            result.setCode("106");
+            result.setMessage("你当前还不是医生或者患者！");
         }
         return result;
     }

@@ -68,7 +68,7 @@
     <orderEntry type="library" name="Maven: org.ow2.asm:asm-commons:5.2" level="project" />
     <orderEntry type="library" name="Maven: org.ow2.asm:asm-tree:5.2" level="project" />
     <orderEntry type="library" name="Maven: com.ibeetl:beetlsql:2.12.21.RELEASE" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: mysql:mysql-connector-java:6.0.6" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: mysql:mysql-connector-java:8.0.19" level="project" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.12" level="project" />
     <orderEntry type="library" name="Maven: cn.afterturn:easypoi-base:3.2.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.poi:poi:3.15" level="project" />

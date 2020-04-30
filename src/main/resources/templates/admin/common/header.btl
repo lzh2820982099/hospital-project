@@ -23,6 +23,6 @@
                 欢迎&nbsp;&nbsp;&nbsp;&nbsp;${session.user.username}
             </a>
         </li>
-        <li class="layui-nav-item"><a href="${ctxPath}/home/logout">退出登录</a></li>
+        <li class="layui-nav-item"><a href="${ctxPath}/home/user/logout">退出登录</a></li>
     </ul>
 </div>
