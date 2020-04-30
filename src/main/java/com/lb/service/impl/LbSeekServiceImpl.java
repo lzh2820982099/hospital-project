@@ -43,6 +43,7 @@ public class LbSeekServiceImpl implements LbSeekService {
         query.andEq("appointment_id",appointmentId);
         LbSeek seek = query.single();
         if (seek == null){
+            seek = new LbSeek();
             seek.setPatientId(Integer.valueOf(String.valueOf(map.get("patientId"))));
             seek.setDays(Integer.valueOf(String.valueOf(map.get("days"))));
             seek.setDescribes(String.valueOf(map.get("describes")));

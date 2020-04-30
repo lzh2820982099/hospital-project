@@ -14,6 +14,7 @@ import com.lb.vo.QueryVo;
 import com.lb.vo.ResponseResult;
 import org.beetl.sql.core.engine.PageQuery;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,6 +36,9 @@ import java.util.Map;
 @Controller
 @RequestMapping("/patient")
 public class FrontPatientController {
+    @Value("${filepath.appointpdf}")
+    private String appointPath;
+
     @Autowired
     private LbAppointmentService lbAppointmentService;
     @Autowired
@@ -96,7 +100,7 @@ public class FrontPatientController {
         LbUser user = (LbUser) session.getAttribute("user");
         LbPatient patient = lbPatientService.findOneByUserId(user.getId());
         LbAppointment appointment = lbAppointmentService.findOne(patient.getAppointmentId());
-        return new ResponseResult(Global.APPOINTMENT_CODE_SUCCESS, PDFUtils.createAppointment(appointment,"D:/"));
+        return new ResponseResult(Global.APPOINTMENT_CODE_SUCCESS, PDFUtils.createAppointment(appointment,appointPath));
     }
 
     /**

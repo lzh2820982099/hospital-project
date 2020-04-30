@@ -59,6 +59,6 @@ public class LoginController {
     public String logout(HttpSession session) {
         // 清除sessin
         session.invalidate();
-        return "redirect:/home/user/loginRegisterPage";
+        return "redirect:/home/user/login";
     }
 }
